@@ -1,19 +1,20 @@
 # Suivi OFDM Lab — 16 octobre 2026
 
-## Bilan du lot de démarrage
-Expériences 1, 2 et 3 implémentées, testées et exécutées. Le premier lot est validé.
-La phase 1 entière reste ouverte : 16-QAM et 64-QAM (expérience 4) à développer.
-Aucune phase suivante n’est déclarée terminée.
+## Bilan de phase 1
+Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
+BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
+Les phases 2 à 7 ne sont pas encore réalisées.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
-QPSK Gray, visualisation scientifique. Configuration JSON centralisée ; trois expériences.
+QPSK Gray, 16-QAM et 64-QAM Gray, visualisation scientifique. Deux configurations JSON ;
+quatre expériences.
 Documentation française A–J, théorie, méthode, glossaire, notebook, rapport progressif,
 README, licence MIT, pyproject.toml et inventaire de dépendances requirements-lock.txt.
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **33 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **51 tests réussis**, 0 échec (0,63 s lors de la dernière exécution locale).
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -21,7 +22,9 @@ La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 - Notebook : cellule exécutée directement avec Python, sorties enregistrées ; lancement par
   un noyau Jupyter interactif non testé.
 - Réexécution des trois scripts : **6 fichiers CSV/JSON identiques** (SHA-256).
-- Trois PNG contrôlés visuellement : axes, annotations et légendes lisibles.
+- Cinq PNG contrôlés visuellement : axes, annotations et légendes lisibles.
+- Alphabets QAM exhaustifs, voisins Gray, comparaison à un détecteur euclidien indépendant.
+- Réexécution QAM : **4 exports CSV/JSON identiques** (SHA-256).
 
 ## Mesures réellement obtenues
 Graine 20261016, NumPy 2.5.4, 10 000 bits par expérience.
@@ -47,10 +50,24 @@ Voir docs/commands.md et docs/environment.md. Python 3.12.14, package installé 
 éditable dans .venv. Les journaux d’installation propres à la machine sont conservés
 localement et exclus du dépôt public. Aucun résultat scientifique n’a été inventé.
 
+## Bilan QAM — expérience 4
+Graine 20261016, NumPy 2.5.4, 120 000 bits par modulation, canal idéal.
+
+| Modulation | Symboles | Erreurs bits / symboles | Es alphabet | Es tirage | Distance minimale |
+|---|---:|---:|---:|---:|---:|
+| 16-QAM | 30 000 | 0 / 0 | 1 | 1,00264 | 0,632456 |
+| 64-QAM | 20 000 | 0 / 0 | ≈1 | 1,007333 | 0,308607 |
+
+La moyenne sur un tirage fini peut différer de 1 ; aucune renormalisation ad hoc du tirage
+n’est appliquée. La 64-QAM rapproche les points à Es constant. La restitution idéale ne
+quantifie pas le BER sous bruit. Les défauts de synchronisation et le canal restent exclus.
+Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
+qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
+
 ## Prochaines étapes
-1. Implémenter 16-QAM et 64-QAM Gray ; tester tout l’alphabet et sa normalisation.
-2. Terminer et valider la phase 1.
-3. Ajouter AWGN, métriques BER/SER, conversions Eb/N0–Es/N0–SNR et intervalles binomiaux.
+1. Phase 2 : ajouter AWGN et les conventions précises Eb/N0–Es/N0–SNR.
+2. Ajouter BER/SER, intervalles binomiaux et référence théorique BPSK/QPSK.
+3. Comparer les quatre modulations avec des effectifs statistiquement adaptés.
 4. Poursuivre FFT/IFFT, OFDM et préfixe cyclique dans l’ordre imposé.
 Interface Streamlit différée à la phase 7 ; rapport final encore progressif.
 
@@ -61,3 +78,14 @@ Tests regroupés par fonctionnalité (33 cas : le test commun des régions de d�
 est désormais séparé entre BPSK et QPSK ; couverture scientifique conservée).
 Configurations d’assistants, environnements, caches, secrets et journaux locaux exclus.
 Identité de commit : compte GitHub du propriétaire, avec adresse noreply.
+
+Validation GitHub du socle : réussie sur Python 3.11, 3.12 et 3.13.
+La branche codex/qam-modulations contient un commit 16-QAM, un commit 64-QAM puis
+les expériences, résultats et explications. Les journaux locaux ne sont pas publiés.
+
+## Processus Git permanent
+Le propriétaire a demandé `staging` pour l’intégration et `main` pour les versions validées.
+Chaque fonctionnalité suit commits → PR vers staging → contrôles → merge, puis
+PR staging → main → contrôles → merge. Les fusions conservent les commits.
+Cette instruction est enregistrée dans AGENTS.md et CONTRIBUTING.md.
+La PR QAM #1 a été redirigée vers staging puis fusionnée après contrôles réussis.
