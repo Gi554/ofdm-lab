@@ -1,0 +1,55 @@
+{
+  "seed": 20261016,
+  "n_fft": 64,
+  "n_active": 52,
+  "order": 16,
+  "spacing_hz": 15000,
+  "n_ofdm_symbols": 1000,
+  "cp_lengths": [
+    0,
+    3,
+    6,
+    16
+  ],
+  "fixed_taps": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      -0.95,
+      0
+    ]
+  ],
+  "fixed_normalize_energy": true,
+  "rayleigh_delays": [
+    0,
+    2,
+    6
+  ],
+  "rayleigh_powers": [
+    0.6,
+    0.3,
+    0.1
+  ]
+}
