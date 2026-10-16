@@ -12,6 +12,9 @@ python experiments/03_qpsk.py
 python experiments/04_qam.py
 python experiments/05_awgn.py
 python experiments/06_ber_comparison.py
+python experiments/07_fft_ifft.py
+python experiments/08_ofdm_transmitter.py
+python experiments/09_ofdm_awgn.py
 ```
 
 Utiliser le Python du venv : `.venv/Scripts/python.exe` sous Windows ou

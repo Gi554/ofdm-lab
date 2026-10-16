@@ -3,7 +3,7 @@
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-La phase 2 est également validée ; les phases 3 à 7 ne sont pas encore réalisées.
+La phase 2 est également validée ; la phase 3 est validée et les phases 4 à 7 restent à réaliser.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
@@ -14,7 +14,7 @@ README, licence MIT, pyproject.toml et inventaire de dépendances requirements-l
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **128 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **181 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -65,9 +65,9 @@ Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
 qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
 
 ## Prochaines étapes
-1. Phase 3 : transformations FFT/IFFT et validation de leur inversion.
-2. Allocation des sous-porteuses, indices/DC/nulles, émetteur OFDM et préfixe cyclique.
-3. Récepteur idéal puis validation OFDM sur AWGN avec bilan énergétique documenté.
+1. Phase 4 : convolution linéaire/circulaire et influence du CP.
+2. Canal fixe puis Rayleigh, réponses impulsionnelle et fréquentielle.
+3. Égalisation ZF/MMSE avec canal connu avant estimation imparfaite.
 Interface Streamlit différée à la phase 7 ; rapport final encore progressif.
 
 ## Organisation du dépôt public
@@ -133,3 +133,15 @@ La phase 2 est fusionnée dans main (PR #7), et sa dernière CI sur main est ré
 Transformées unitaires et fréquences natives implémentées. 144 tests réussis.
 Expérience 7 exécutée : inversion, Parseval et orthogonalité ; mesures dans fft.json.
 La phase 3 reste en cours : émetteur et récepteur OFDM à développer.
+
+## Phase 3 — Bilan final
+Phase validée : expériences 7, 8 et 9 exécutées, 181 tests réussis, Ruff et formatage conformes.
+FFT/IFFT unitaires : erreur d’inversion 5,66e-16 et erreur de Gram 5,84e-15 (N=64).
+Allocation symétrique, DC et Nyquist nulles, CP 0 à N, réception avec début connu.
+Les quatre modulations sont restituées sans erreur sur huit cas idéaux (100 symboles OFDM par cas).
+L’expérience AWGN couvre 64 points et 21 632 000 bits ; toutes les références BER et SER
+passent l’enveloppe simultanée au moins 99 %. CP=16/N=64 : coût de 0,969100 dB en référence
+Eb totale. En référence utile, le CP n’altère pas les performances AWGN.
+Neuf exports CSV/JSON identiques après réexécution. Trois figures contrôlées visuellement,
+notebook 03 exécuté directement avec Python. Aucun canal multitrajet ni égalisation n’est encore implémenté.
+Prochaine phase : démontrer CP et convolution, canal fixe/Rayleigh, égalisation ZF/MMSE.

@@ -9,8 +9,9 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
 La phase 2 est validée : AWGN, conversions énergétiques, BER/SER, intervalles de confiance
-et références théoriques exactes. **128 tests** ; courbes sur **43,2 millions de bits**.
-OFDM, multitrajets, synchronisation, image et interface restent à développer.
+et références théoriques exactes. **181 tests** ; courbes sur **43,2 millions de bits**.
+La phase 3 est validée : FFT/IFFT unitaires, émetteur/récepteur OFDM, CP, DC/gardes nulles,
+validation AWGN sur 21,632 millions de bits. Multitrajets, synchronisation, image et interface suivent.
 Voir [PROGRESS.md](PROGRESS.md) pour les mesures et validations exécutées.
 
 ## Installation (PowerShell, Python 3.11 ou ultérieur)
@@ -35,6 +36,9 @@ Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les conventions de commits et de va
 .\.venv\Scripts\python.exe experiments/04_qam.py
 .\.venv\Scripts\python.exe experiments/05_awgn.py
 .\.venv\Scripts\python.exe experiments/06_ber_comparison.py
+.\.venv\Scripts\python.exe experiments/07_fft_ifft.py
+.\.venv\Scripts\python.exe experiments/08_ofdm_transmitter.py
+.\.venv\Scripts\python.exe experiments/09_ofdm_awgn.py
 ```
 
 Les scripts lisent les configurations de `configs/` et écrasent leurs résultats dans `results/` :
@@ -88,3 +92,20 @@ print(result["ber_ci_lower"], result["ber_ci_upper"], result["ber_theory_exact"]
 
 L’effectif est fixé avant le tirage ; les blocs limitent la mémoire. La taille des blocs,
 la graine et la version NumPy font partie des paramètres de reproduction.
+
+## Chaîne OFDM
+
+```python
+from ofdm_lab import generate_bits
+from ofdm_lab.configuration import OFDMConfig
+from ofdm_lab.transmitter import transmit
+from ofdm_lab.receiver import receive
+
+config = OFDMConfig(n_fft=64, n_active=52, cp_length=16, order=4)
+bits = generate_bits(100 * config.bits_per_ofdm_symbol, seed=42)
+received_bits = receive(transmit(bits, config).waveform, config).bits
+```
+
+Les blocs doivent être complets ; début et configuration sont connus.
+`ofdm_simulation.simulate_ofdm_awgn` utilise `reference="useful"` ou `"total"`
+pour inclure explicitement le coût du CP dans Eb. Voir docs/theory/05_fft_ofdm.md.

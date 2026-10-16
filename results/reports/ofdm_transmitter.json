@@ -1,0 +1,17 @@
+{
+  "seed": 20261016,
+  "n_fft": 64,
+  "n_active": 52,
+  "cp_length": 16,
+  "order": 16,
+  "spacing_hz": 15000,
+  "n_ofdm_symbols": 256,
+  "n_bits": 53248,
+  "waveform_samples": 20480,
+  "mean_useful_energy": 52.25625000000001,
+  "mean_total_energy": 65.67047268154064,
+  "expected_useful_energy": 52.0,
+  "expected_total_energy": 65.0,
+  "sample_rate_hz": 960000.0,
+  "numpy_version": "2.5.4"
+}
