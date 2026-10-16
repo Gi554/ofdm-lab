@@ -1,0 +1,40 @@
+name: Validation scientifique
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Installer le projet
+        run: python -m pip install -e ".[dev]"
+      - name: Tests scientifiques
+        run: python -m pytest -q
+      - name: Analyse statique
+        run: python -m ruff check .
+      - name: Formatage
+        run: python -m ruff format --check .
+      - name: Expériences reproductibles
+        run: |
+          python experiments/01_binary_generation.py
+          python experiments/02_bpsk.py
+          python experiments/03_qpsk.py
+      - name: Archiver les mesures
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultats-python-${{ matrix.python-version }}
+          path: results/

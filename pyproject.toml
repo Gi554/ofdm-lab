@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ofdm-lab"
 version = "0.1.0"
-description = "Laboratoire pÃ©dagogique de transmissions numÃ©riques en bande de base complexe"
+description = "Laboratoire pédagogique de transmissions numériques en bande de base complexe"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
@@ -25,6 +25,7 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+extend-exclude = [".local"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B"]
