@@ -1,0 +1,3 @@
+modulation,bits_per_symbol,n_bits,n_symbols,bit_errors,symbol_errors,ber_observed,ser_observed,alphabet_mean_energy,sample_mean_energy,minimum_distance,seed,numpy_version,channel
+16-QAM,4,120000,30000,0,0,0.0,0.0,1.0,1.00264,0.6324555320336758,20261016,2.5.4,"ideal, sans bruit, phase connue"
+64-QAM,6,120000,20000,0,0,0.0,0.0,0.9999999999999998,1.007333333333333,0.30860669992418377,20261016,2.5.4,"ideal, sans bruit, phase connue"

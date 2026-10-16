@@ -1,0 +1,34 @@
+[
+  {
+    "modulation": "16-QAM",
+    "bits_per_symbol": 4,
+    "n_bits": 120000,
+    "n_symbols": 30000,
+    "bit_errors": 0,
+    "symbol_errors": 0,
+    "ber_observed": 0.0,
+    "ser_observed": 0.0,
+    "alphabet_mean_energy": 1.0,
+    "sample_mean_energy": 1.00264,
+    "minimum_distance": 0.6324555320336758,
+    "seed": 20261016,
+    "numpy_version": "2.5.4",
+    "channel": "ideal, sans bruit, phase connue"
+  },
+  {
+    "modulation": "64-QAM",
+    "bits_per_symbol": 6,
+    "n_bits": 120000,
+    "n_symbols": 20000,
+    "bit_errors": 0,
+    "symbol_errors": 0,
+    "ber_observed": 0.0,
+    "ser_observed": 0.0,
+    "alphabet_mean_energy": 0.9999999999999998,
+    "sample_mean_energy": 1.007333333333333,
+    "minimum_distance": 0.30860669992418377,
+    "seed": 20261016,
+    "numpy_version": "2.5.4",
+    "channel": "ideal, sans bruit, phase connue"
+  }
+]

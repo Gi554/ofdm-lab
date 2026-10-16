@@ -39,3 +39,9 @@ avec la 64-QAM. Cela ne fixe pas une efficacité en bit/s/Hz sans préciser la m
 et la bande occupée. Le rapprochement des points rend les décisions plus sensibles aux
 perturbations à Es fixé. Les performances BER à Eb/N0 fixé seront mesurées en phase 2 ;
 aucune performance bruitée n’est déduite des essais idéaux.
+
+## Référence scientifique
+David Tse et Pramod Viswanath, *Fundamentals of Wireless Communication*, Cambridge
+University Press, 2005. [Page officielle des auteurs](https://web.stanford.edu/~dntse/wireless_book.html),
+[appendice A : détection et estimation dans le bruit gaussien](https://web.stanford.edu/~dntse/Chapters_PDF/Fundamentals_Wireless_Communication_AppendixA.pdf).
+Référence vérifiée le 16 octobre 2026 ; la dérivation du mapping choisi est explicitée ci-dessus.
