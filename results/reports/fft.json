@@ -1,0 +1,13 @@
+{
+  "n_fft": 64,
+  "spacing_hz": 15000,
+  "seed": 20261016,
+  "sample_rate_hz": 960000,
+  "useful_duration_s": 6.666666666666667e-05,
+  "max_inverse_error": 5.661048867003677e-16,
+  "frequency_energy": 64.0,
+  "time_energy": 63.999999999999986,
+  "max_orthogonality_error": 5.842639779958594e-15,
+  "normalization": "ortho (unitaire)",
+  "numpy_version": "2.5.4"
+}

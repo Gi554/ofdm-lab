@@ -56,6 +56,7 @@ jobs:
           python experiments/04_qam.py
           python experiments/05_awgn.py
           python experiments/06_ber_comparison.py
+          python experiments/07_fft_ifft.py
       - name: Archiver les mesures
         uses: actions/upload-artifact@v4
         with:

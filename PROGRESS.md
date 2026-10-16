@@ -128,3 +128,8 @@ awgn-channel, ber-ser-validation, qam-modulations, workflow-staging. Les commits
 La règle persistante est mise à jour dans AGENTS.md et CONTRIBUTING.md.
 Le processus PR → staging → PR → main, les protections et les merge commits restent applicables.
 La phase 2 est fusionnée dans main (PR #7), et sa dernière CI sur main est réussie.
+
+## Phase 3 — FFT/IFFT
+Transformées unitaires et fréquences natives implémentées. 144 tests réussis.
+Expérience 7 exécutée : inversion, Parseval et orthogonalité ; mesures dans fft.json.
+La phase 3 reste en cours : émetteur et récepteur OFDM à développer.
