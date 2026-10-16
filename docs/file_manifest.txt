@@ -10,6 +10,7 @@ README.md
 app/README.md
 configs/awgn.json
 configs/ber.json
+configs/comparison.json
 configs/equalization.json
 configs/estimation.json
 configs/fft.json
@@ -36,6 +37,7 @@ docs/experiments/11_multipath_channel.md
 docs/experiments/12_channel_equalization.md
 docs/experiments/13_frequency_offset.md
 docs/experiments/14_channel_estimation.md
+docs/experiments/15_global_comparison.md
 docs/file_manifest.txt
 docs/final_report.md
 docs/glossary.md
@@ -49,6 +51,7 @@ docs/theory/06_multipath.md
 docs/theory/07_equalization.md
 docs/theory/08_synchronization.md
 docs/theory/09_channel_estimation.md
+docs/theory/10_global_comparison.md
 experiments/01_binary_generation.py
 experiments/02_bpsk.py
 experiments/03_qpsk.py
@@ -63,6 +66,7 @@ experiments/11_multipath_channel.py
 experiments/12_channel_equalization.py
 experiments/13_frequency_offset.py
 experiments/14_channel_estimation.py
+experiments/15_global_comparison.py
 experiments/_common.py
 experiments/_multipath_common.py
 notebooks/01_fundamentals.ipynb
@@ -71,6 +75,7 @@ notebooks/03_ofdm.ipynb
 notebooks/04_multipath_equalization.ipynb
 notebooks/05_frequency_offset.ipynb
 notebooks/06_channel_estimation.ipynb
+notebooks/07_global_comparison.ipynb
 pyproject.toml
 requirements-lock.txt
 results/datasets/16qam_alphabet.csv
@@ -93,6 +98,9 @@ results/datasets/estimation_validation.csv
 results/datasets/fft_frequency.csv
 results/datasets/fft_time.csv
 results/datasets/frequency_offset.csv
+results/datasets/global_comparison.csv
+results/datasets/global_scorecard.csv
+results/datasets/global_validation.csv
 results/datasets/ofdm_awgn.csv
 results/datasets/ofdm_grid.csv
 results/datasets/ofdm_time.csv
@@ -119,6 +127,7 @@ results/figures/11_multipath_channel.png
 results/figures/12_channel_equalization.png
 results/figures/13_frequency_offset.png
 results/figures/14_channel_estimation.png
+results/figures/15_global_comparison.png
 results/reports/awgn.json
 results/reports/ber_comparison.json
 results/reports/ber_summary.json
@@ -132,6 +141,8 @@ results/reports/equalization_summary.json
 results/reports/estimation_reproducibility.json
 results/reports/fft.json
 results/reports/frequency_offset.json
+results/reports/global_comparison.json
+results/reports/global_reproducibility.json
 results/reports/multipath.json
 results/reports/ofdm_awgn.json
 results/reports/ofdm_summary.json
@@ -148,6 +159,7 @@ results/reports/ruff.txt
 src/ofdm_lab/__init__.py
 src/ofdm_lab/bits.py
 src/ofdm_lab/channels.py
+src/ofdm_lab/comparison.py
 src/ofdm_lab/configuration.py
 src/ofdm_lab/demodulation.py
 src/ofdm_lab/equalization.py
@@ -168,6 +180,7 @@ src/ofdm_lab/visualization.py
 tests/test_bits.py
 tests/test_bpsk.py
 tests/test_channels.py
+tests/test_comparison.py
 tests/test_equalization.py
 tests/test_estimation.py
 tests/test_metrics.py

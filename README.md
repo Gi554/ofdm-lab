@@ -9,10 +9,11 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
 La phase 2 est validée : AWGN, conversions énergétiques, BER/SER, intervalles de confiance
-et références théoriques exactes. **283 tests** ; courbes sur **43,2 millions de bits**.
+et références théoriques exactes. **293 tests** ; courbes sur **43,2 millions de bits**.
 La phase 3 est validée : FFT/IFFT unitaires, émetteur/récepteur OFDM, CP, DC/gardes nulles,
 validation AWGN sur 21,632 millions de bits. La phase 4 est validée : canal multitrajet, CP et égalisation connue ZF/MMSE.
-Synchronisation, estimation de canal, image et interface restent à développer.
+La phase 5 est validée : CFO et correction CP, pilotes LS/interpolation, comparaison globale.
+Transmission d’image (phase 6) et interface Streamlit (phase 7) restent à développer.
 Voir [PROGRESS.md](PROGRESS.md) pour les mesures et validations exécutées.
 
 ## Installation (PowerShell, Python 3.11 ou ultérieur)
@@ -122,7 +123,7 @@ Choisir `equalizer="zf"` ou `"mmse"` ; le mode MMSE par défaut prend son gain r
 en compte pour les décisions. Les effets du CP et les IC conditionnels sont documentés dans
 [la note d’égalisation](docs/theory/07_equalization.md). Le canal n’est pas encore estimé.
 
-### Synchronisation — phase 5 en cours
+### Synchronisation — phase 5 validée
 L’expérience 13 ajoute un CFO continu et une première correction par corrélation CP,
 avec timing et mémoire connus. Comparaison brute/estimée/oracle, ICI et RMSE.
 Les limites de capture modulo 1 et de dérive résiduelle sont mesurées explicitement.
@@ -133,4 +134,10 @@ L’expérience 14 ajoute des pilotes en peigne et une estimation LS avec interp
 linéaire par trame. Elle compare canal connu, estimé et non corrigé, avec BER utile,
 MSE analytique et mesurée, coût des pilotes et débit. Voir
 [l’expérience 14](docs/experiments/14_channel_estimation.md).
-La comparaison globale de l’expérience 15 reste à réaliser avant la transmission d’image.
+La comparaison globale est disponible dans [l’expérience 15](docs/experiments/15_global_comparison.md).
+
+### Comparaison globale
+192 essais couvrent quatre modulations, deux FFT, deux CP, deux densités de pilotes,
+deux niveaux Eb/N0 et trois canaux. Cinq modes appariés ; 4 832 256 bits distincts.
+Les 128 références BER valides passent une enveloppe simultanée au moins 99 %.
+Les résultats à CP insuffisant sont descriptifs. La phase 5 est terminée.

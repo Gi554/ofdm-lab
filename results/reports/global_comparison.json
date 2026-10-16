@@ -1,0 +1,17 @@
+{
+  "seed": 20261017,
+  "numpy_version": "2.5.4",
+  "n_trials": 192,
+  "n_measurements": 960,
+  "unique_transmitted_bits": 4832256,
+  "n_sufficient_cp_trials": 128,
+  "conditional_ber_comparisons": 128,
+  "all_conditional_ber_passed": true,
+  "familywise_confidence_at_least": 0.99,
+  "paired_zf_mmse_error_counts_identical": true,
+  "sample_rate_hz": 960000,
+  "occupation_fraction": 0.8125,
+  "energy_reference": "total including coherent pilots and CP",
+  "timing": "perfect; CFO zero",
+  "rayleigh": "one static realization, conditional results"
+}

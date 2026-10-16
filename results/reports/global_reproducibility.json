@@ -1,0 +1,10 @@
+{
+  "exports_checked": 4,
+  "all_identical": true,
+  "sha256": {
+    "results/datasets/global_comparison.csv": "c74a927458bd976106afc455acba2ff2d42c93150b916b483bbef748d1556a8b",
+    "results/datasets/global_validation.csv": "dd7070f74ecaf3f24121a20527128892e4d23112af48b1bd28d565269a4f408d",
+    "results/datasets/global_scorecard.csv": "443198265af4962ae5d5b8688bf691388f7a50e30dee9e9ef6ceb20ee5232a69",
+    "results/reports/global_comparison.json": "226e5891e1d02eaea60f672567af89d3a83462130a0462f62aa45ca779042642"
+  }
+}
