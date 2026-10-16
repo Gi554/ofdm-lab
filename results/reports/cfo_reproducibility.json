@@ -1,0 +1,11 @@
+{
+  "exports_checked": 5,
+  "all_identical": true,
+  "sha256": {
+    "results/datasets/frequency_offset.csv": "280e449fc3730f12c1f4477d578b89acca6f87edb8239e01d435253e8ff76a89",
+    "results/datasets/cfo_estimates.csv": "fd837d94b43b9b8064c662a073552fb08371577a45348d02a2e2a43d5e730efa",
+    "results/datasets/cfo_estimation_summary.csv": "a21e4cebf9740bc86b5e5356837426606807b3610b68d5146b4f97eeddf3960b",
+    "results/datasets/cfo_leakage.csv": "f1bf3fede26d95abe7613cbdaa9f2a15cd73b57db65f55e4eb7bedf394d851bd",
+    "results/reports/frequency_offset.json": "765481548a8c6f39a6bcd74556d6fb1e42db1babbdf70a10588c84c8623ccce6"
+  }
+}

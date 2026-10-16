@@ -14,7 +14,7 @@ README, licence MIT, pyproject.toml et inventaire de dépendances requirements-l
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **223 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **257 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -172,3 +172,15 @@ Documentation A–J, figures, CSV/JSON et notebook 04 ; exécution notebook dire
 mode Jupyter interactif non testé. Estimation imparfaite et CFO restent à la phase 5.
 
 Neuf exports CSV/JSON identiques après réexécution des expériences 10 à 12 (SHA-256).
+
+## Phase 5 — CFO (expérience 13)
+Injection CFO continue sur le flux, corrélation CP à début connu et mémoire FIR connue,
+correction par fréquence estimée et témoin oracle. Plage modulo 1, pas de CFO entier.
+257 tests réussis ; 48 bursts, 3 744 000 bits distincts, 144 mesures appariées.
+400 essais supplémentaires pour la RMSE ; 12 cas sans bruit corrigés sans erreur.
+AWGN 16-QAM, ε=0,15, Eb utile/N0=24 dB : BER 0,421404 brut, 0,105077 corrigé CP,
+0 erreur observée oracle sur 104 000 bits. Le résidu s’accumule sur les 500 trames.
+RMSE AWGN de 0,010015 à 0,000810 entre 0 et 18 dB (50 bursts indépendants par point).
+Cinq exports CSV/JSON identiques après réexécution ; figure vérifiée visuellement.
+Les BER sont descriptifs, sans IC binomial. H reste parfaitement connu pour ZF.
+La phase 5 reste en cours : expérience 14 pilotes/interpolation puis 15 comparaison globale.
