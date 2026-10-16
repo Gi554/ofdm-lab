@@ -1,6 +1,6 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phase 1 validée ; phases 2 à 7 à réaliser.**
+**Rapport progressif — phase 1 validée ; phase 2 en cours, phases 3 à 7 à réaliser.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
@@ -14,7 +14,9 @@ Voir theory/01_modulations.md et theory/02_qam.md pour les mappings, décisions 
 ## 5. Fondements mathématiques de l’OFDM
 À rédiger après expérience 7.
 ## 6. Modélisation des canaux radio
-À réaliser : AWGN puis convolution multitrajet.
+AWGN complexe disponible : E|n|²=N0 et N0/2 par axe. Expérience 5 : 12 cas,
+écart relatif maximal de puissance 1,225 %. Voir theory/03_awgn.md et experiments/05_awgn.md.
+La convolution multitrajet reste à réaliser.
 ## 7. Architecture de l’émetteur
 Les mappings BPSK/QPSK/16-QAM/64-QAM sont disponibles. Allocation, IFFT et CP restent à développer.
 ## 8. Architecture du récepteur
@@ -36,7 +38,8 @@ Non réalisée.
 ## 13. Application à la transmission d’image
 Non réalisée.
 ## 14. Limites du modèle
-Pas de bruit, de canal radio, de mise en forme, de codage ni de défaut de synchronisation.
+AWGN idéal disponible ; pas encore de canal multitrajet, de mise en forme, de codage
+ni de défaut de synchronisation. Les BER sous bruit restent à étudier.
 ## 15. Perspectives : MIMO-OFDM, 5G NR et radio logicielle
 Extensions ultérieures ; aucune conformité à une norme n’est revendiquée.
 ## 16. Conclusion générale

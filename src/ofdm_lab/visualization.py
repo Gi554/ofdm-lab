@@ -54,3 +54,29 @@ def plot_constellation(symbols, labels, title: str, path: Path):
     fig.tight_layout()
     fig.savefig(path, dpi=160)
     plt.close(fig)
+
+
+def plot_constellation_clouds(clouds, ideal, title: str, path: Path):
+    """Comparer des nuages reçus sur des axes communs ; points réellement simulés."""
+    fig, axes = plt.subplots(1, len(clouds), figsize=(5 * len(clouds), 5), squeeze=False)
+    extent = (
+        max(1.5, *(float(np.max(np.abs(np.concatenate((y.real, y.imag))))) for _, y in clouds))
+        * 1.1
+    )
+    for ax, (label, received) in zip(axes[0], clouds, strict=True):
+        ax.scatter(received.real, received.imag, s=5, alpha=0.2, label="Symboles reçus")
+        ax.scatter(ideal.real, ideal.imag, marker="x", c="black", s=50, label="Alphabet idéal")
+        ax.set(
+            xlabel="I (amplitude normalisée)",
+            ylabel="Q (amplitude normalisée)",
+            title=label,
+            xlim=(-extent, extent),
+            ylim=(-extent, extent),
+        )
+        ax.set_aspect("equal")
+        ax.grid(alpha=0.3)
+        ax.legend(fontsize=8)
+    fig.suptitle(title)
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
