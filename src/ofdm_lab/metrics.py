@@ -100,3 +100,16 @@ def zero_error_upper_bound(trials: int, confidence: float = 0.95) -> float:
     """Borne unilatérale après zéro erreur sur N essais Bernoulli indépendants fixes."""
     n = _positive_integer(trials, "Le nombre d'essais")
     return float(-np.expm1(np.log1p(-_confidence(confidence)) / n))
+
+
+def mean_binomial_interval(
+    counts: ArrayLike, trials_per_stratum: int, confidence: float = 0.95
+) -> tuple[float, float]:
+    """IC conservateur de la moyenne de probabilités de strates de même effectif.
+
+    Les essais sont iid au sein de chaque strate. Les probabilités peuvent différer
+    entre strates et les observations peuvent être corrélées entre strates d'un même
+    essai. Réutilise Clopper–Pearson par strate et Bonferroni, comme ber_interval.
+    Exemple : compteurs par porteuse/bit, sur N trames OFDM indépendantes à H fixe.
+    """
+    return ber_interval(counts, trials_per_stratum, confidence)
