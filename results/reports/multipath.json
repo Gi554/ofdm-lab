@@ -1,0 +1,25 @@
+{
+  "channels": [
+    {
+      "channel": "fixed",
+      "memory_samples": 6,
+      "impulse_energy": 1.0000000000000002,
+      "min_response_magnitude": 0.03624997167972077,
+      "max_response_magnitude": 1.4137488955091069
+    },
+    {
+      "channel": "rayleigh_static",
+      "memory_samples": 6,
+      "impulse_energy": 0.5045700878240356,
+      "min_response_magnitude": 0.09637262746761549,
+      "max_response_magnitude": 1.1411661863863476
+    }
+  ],
+  "rayleigh_realizations": 5000,
+  "rayleigh_mean_energy": 1.0044923066711984,
+  "rayleigh_std_energy": 0.6773085587830853,
+  "expected_mean_energy": 1.0,
+  "rayleigh_realization_seed": 20261017,
+  "ensemble_root_seed": 20261018,
+  "numpy_version": "2.5.4"
+}

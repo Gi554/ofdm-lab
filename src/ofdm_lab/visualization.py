@@ -276,3 +276,56 @@ def plot_ofdm_ber(frame, path: Path):
     fig.tight_layout()
     fig.savefig(path, dpi=160, bbox_inches="tight")
     plt.close(fig)
+
+
+def plot_cp_identity(frame, path: Path):
+    """Écart mesuré à la diagonalisation, sans confondre cet écart avec un BER."""
+    fig, ax = plt.subplots(figsize=(7, 4))
+    ax.semilogy(frame.cp_length, frame.relative_diagonal_error, "o-", label="||Y-HX||² / ||HX||²")
+    ax.axvline(frame.channel_memory.iloc[0], color="gray", linestyle="--", label="Mémoire du canal")
+    ax.set(
+        xlabel="Longueur CP (échantillons)",
+        ylabel="Écart relatif (sans unité)",
+        title="CP : convolution linéaire contre modèle circulaire, sans bruit",
+    )
+    ax.grid(which="both", alpha=0.3)
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_channel_profiles(fixed, fading, energies, sample_rate_hz: float, path: Path):
+    """Réponses impulsionnelles/fréquentielles et distribution d'énergie réellement tirée."""
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+    for name, h in [("Fixe", fixed), ("Rayleigh statique", fading)]:
+        axes[0].stem(
+            np.arange(h.size) / sample_rate_hz * 1e6,
+            abs(h),
+            label=name,
+            markerfmt="o" if name == "Fixe" else "x",
+        )
+        f = np.fft.fftshift(np.fft.fftfreq(512, d=1 / sample_rate_hz)) / 1e3
+        response = np.fft.fftshift(np.fft.fft(h, n=512))
+        axes[1].plot(f, 20 * np.log10(np.maximum(abs(response), 1e-15)), label=name)
+    axes[0].set(
+        xlabel="Retard (µs)", ylabel="|h| (amplitude normalisée)", title="Réponses impulsionnelles"
+    )
+    axes[1].set(
+        xlabel="Fréquence (kHz)",
+        ylabel="|H| (dB, référence amplitude 1)",
+        title="Sélectivité fréquentielle",
+    )
+    axes[2].hist(energies, bins=50, density=True, label="5 000 réalisations")
+    axes[2].axvline(1, color="black", linestyle="--", label="Moyenne attendue")
+    axes[2].set(
+        xlabel="Somme |h|² (sans unité)",
+        ylabel="Densité de probabilité",
+        title="Énergie Rayleigh non renormalisée",
+    )
+    for ax in axes:
+        ax.grid(alpha=0.3)
+        ax.legend(fontsize=8)
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)

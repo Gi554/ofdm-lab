@@ -1,0 +1,50 @@
+[
+  {
+    "cp_length": 0,
+    "channel_memory": 6,
+    "cp_sufficient": false,
+    "n_bits": 208000,
+    "bit_errors_uncorrected": 55119,
+    "ber_uncorrected": 0.2649951923076923,
+    "relative_diagonal_error": 0.08929627627097955,
+    "tail_samples": 6,
+    "seed": 20261016,
+    "numpy_version": "2.5.4"
+  },
+  {
+    "cp_length": 3,
+    "channel_memory": 6,
+    "cp_sufficient": false,
+    "n_bits": 208000,
+    "bit_errors_uncorrected": 55370,
+    "ber_uncorrected": 0.2662019230769231,
+    "relative_diagonal_error": 0.04570043219213091,
+    "tail_samples": 6,
+    "seed": 20261016,
+    "numpy_version": "2.5.4"
+  },
+  {
+    "cp_length": 6,
+    "channel_memory": 6,
+    "cp_sufficient": true,
+    "n_bits": 208000,
+    "bit_errors_uncorrected": 54570,
+    "ber_uncorrected": 0.26235576923076925,
+    "relative_diagonal_error": 6.320961559559087e-32,
+    "tail_samples": 6,
+    "seed": 20261016,
+    "numpy_version": "2.5.4"
+  },
+  {
+    "cp_length": 16,
+    "channel_memory": 6,
+    "cp_sufficient": true,
+    "n_bits": 208000,
+    "bit_errors_uncorrected": 54570,
+    "ber_uncorrected": 0.26235576923076925,
+    "relative_diagonal_error": 6.320961559559087e-32,
+    "tail_samples": 6,
+    "seed": 20261016,
+    "numpy_version": "2.5.4"
+  }
+]

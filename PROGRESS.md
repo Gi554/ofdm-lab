@@ -145,3 +145,11 @@ Eb totale. En référence utile, le CP n’altère pas les performances AWGN.
 Neuf exports CSV/JSON identiques après réexécution. Trois figures contrôlées visuellement,
 notebook 03 exécuté directement avec Python. Aucun canal multitrajet ni égalisation n’est encore implémenté.
 Prochaine phase : démontrer CP et convolution, canal fixe/Rayleigh, égalisation ZF/MMSE.
+
+## Phase 4 — Canal et CP
+201 tests réussis. Canal FIR causal complet, réponse fréquentielle non normalisée,
+profil Rayleigh normalisé en moyenne. Expériences 10 et 11 réellement exécutées.
+Mémoire 6 : écart de diagonalisation 0,0893 sans CP, 0,0457 avec C=3, puis 6,32e-32 avec C>=6.
+5 000 canaux Rayleigh : énergie moyenne 1,0044923, écart-type 0,6773086.
+Le BER non corrigé reste élevé : le CP ne remplace pas l’égalisation.
+La phase 4 reste en cours ; ZF et MMSE sont le lot suivant.
