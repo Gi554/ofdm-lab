@@ -95,3 +95,13 @@ L’oracle corrige avec le CFO réel ; il constitue un témoin, pas une méthode
 3 744 000 bits distincts, 48 bursts, 144 mesures et 400 essais de RMSE documentés dans
 [l’expérience 13](experiments/13_frequency_offset.md). La capture est modulo 1 et
 nécessite un début et une mémoire connus. Pas encore de pilotes ni d’estimation de H.
+
+## Expérience 14 — Canal estimé par pilotes
+Pilotes en peigne, LS et interpolation linéaire par demi-bande implémentés, en réutilisant
+mapping, FFT/CP, égalisation et décisions. 72 essais et 3 672 000 bits distincts
+comparent les modes non corrigé, H parfait et H estimé.
+Le bilan Eb total inclut le coût pilote et le CP déterministe ; la MSE sépare biais
+et bruit avec une référence analytique. L’interpolation conserve un plancher sur les
+canaux très sélectifs : H estimé ne remplace pas le témoin parfait.
+Voir [l’expérience 14](experiments/14_channel_estimation.md) pour mesures et limites.
+La comparaison globale, l’image et l’interface restent à développer.

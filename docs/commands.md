@@ -30,3 +30,8 @@ résolu et les paramètres scientifiques des premières expériences.
 ```powershell
 python experiments/13_frequency_offset.py
 ```
+
+## Pilotes et estimation
+```powershell
+python experiments/14_channel_estimation.py
+```

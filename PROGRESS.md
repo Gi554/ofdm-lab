@@ -3,7 +3,7 @@
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-La phase 2 est également validée ; la phase 3 est validée et la phase 4 est validée et les phases 5 à 7 restent à réaliser.
+Les phases 1 à 4 sont validées. La phase 5 est en cours ; les phases 6 et 7 restent à réaliser.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
@@ -14,7 +14,7 @@ README, licence MIT, pyproject.toml et inventaire de dépendances requirements-l
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **257 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **283 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -184,3 +184,16 @@ RMSE AWGN de 0,010015 à 0,000810 entre 0 et 18 dB (50 bursts indépendants par 
 Cinq exports CSV/JSON identiques après réexécution ; figure vérifiée visuellement.
 Les BER sont descriptifs, sans IC binomial. H reste parfaitement connu pour ZF.
 La phase 5 reste en cours : expérience 14 pilotes/interpolation puis 15 comparaison globale.
+
+## Phase 5 — Pilotes et estimation (expérience 14)
+Plan en peigne, LS par trame, interpolation linéaire séparée sur les demi-bandes.
+Trois comparaisons appariées : aucune correction, H parfait et H estimé, égalisation ZF.
+283 tests réussis ; 72 essais, 216 mesures et 3 672 000 bits distincts.
+Les 72 moyennes MSE passent l’enveloppe conservatrice Chebyshev + union >=99 %.
+Pilotes exclus du BER et du débit utile ; Eb total inclut pilotes et CP, dont le coût
+pilote cohérent est calculé exactement. Pas 4 : 16 pilotes, 36 données, facteur 1,827144.
+16-QAM fixe, pas 4, Eb total/N0=18 dB : BER non corrigé 0,268792 ; parfait 0,018222 ;
+estimé 0,144833. MSE estimée 0,130398 contre espérance 0,130950 : biais d’interpolation.
+Quatre exports CSV/JSON reproductibles ; figure vérifiée visuellement et notebook 06
+exécuté directement avec Python (mode Jupyter interactif non testé).
+La phase 5 reste en cours : expérience 15 de comparaison globale à réaliser.

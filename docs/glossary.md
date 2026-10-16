@@ -39,3 +39,7 @@
 - **CFO** : différence de fréquence d’oscillateurs, normalisée ici par l’espacement entre porteuses.
 - **ICI** : interférence entre sous-porteuses dans la projection FFT du récepteur.
 - **Oracle** : témoin utilisant une grandeur réelle connue uniquement par la simulation.
+
+- **Pilote** : symbole émis public permettant d’estimer le canal, sans bit utile.
+- **LS** : moindres carrés ; ici H estimé aux pilotes par Yp/Xp.
+- **Biais d’interpolation** : différence persistante entre le canal réel et son approximation interpolée, même sans bruit.

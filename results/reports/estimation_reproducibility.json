@@ -1,0 +1,10 @@
+{
+  "exports_checked": 4,
+  "all_identical": true,
+  "sha256": {
+    "results/datasets/channel_estimation.csv": "0ba7e8d7c8899bdc143ae67fd908ea0b15390025ff733f9a9621c28bc030f334",
+    "results/datasets/estimation_validation.csv": "1aab1131895a5bcfa815bef3e6a571fecd2c8fddb9a1b1dcf718dd30e0aad36a",
+    "results/datasets/estimation_profiles.csv": "ff1e78bbed704ad6845b303520effc34e6a9ef73c4f880fdcf529868e88d9ca2",
+    "results/reports/channel_estimation.json": "5857b841127bd0263867d741b739aa90834a443eda9ab326ac574fc97ff9ebbe"
+  }
+}
