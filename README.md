@@ -8,7 +8,8 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 ## État du projet
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
-Les phases AWGN, OFDM, multitrajets, synchronisation, image et interface restent à développer.
+La phase 2 est en cours : le canal AWGN et les conversions énergétiques sont disponibles.
+Les courbes BER/SER, puis OFDM, multitrajets, synchronisation, image et interface suivent.
 Voir [PROGRESS.md](PROGRESS.md) pour les mesures et validations exécutées.
 
 ## Installation (PowerShell, Python 3.11 ou ultérieur)
@@ -31,6 +32,7 @@ Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les conventions de commits et de va
 .\.venv\Scripts\python.exe experiments/02_bpsk.py
 .\.venv\Scripts\python.exe experiments/03_qpsk.py
 .\.venv\Scripts\python.exe experiments/04_qam.py
+.\.venv\Scripts\python.exe experiments/05_awgn.py
 ```
 
 Les scripts lisent `configs/fundamentals.json` et écrasent leurs résultats dans `results/` :
