@@ -1,0 +1,655 @@
+{
+  "n_channel_trials": 64,
+  "n_measurements": 256,
+  "unique_transmitted_bits": 10816000,
+  "bit_decisions_all_methods": 43264000,
+  "zf_mmse_gain_aware_identical_error_counts": true,
+  "all_conditional_ber_validation_passed": true,
+  "all_conditional_ser_validation_passed": true,
+  "conditional_comparisons": 128,
+  "familywise_confidence_at_least": 0.99,
+  "all_noiseless_sufficient_cp_equalized_passed": true,
+  "noiseless_cases": [
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 5200,
+      "bit_errors": 270,
+      "mse": 0.5380772110461725
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 5200,
+      "bit_errors": 125,
+      "mse": 0.44673869384283865
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 5200,
+      "bit_errors": 125,
+      "mse": 0.44673869384283865
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 5200,
+      "bit_errors": 125,
+      "mse": 0.44673869384283865
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 0.5451760656411146
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 1.4927426862356638e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 1.580692020308602e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 1.580692020308602e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 10400,
+      "bit_errors": 1854,
+      "mse": 0.5375293519942257
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 10400,
+      "bit_errors": 480,
+      "mse": 0.5029605580597917
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 10400,
+      "bit_errors": 480,
+      "mse": 0.5029605580597917
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 10400,
+      "bit_errors": 480,
+      "mse": 0.5029605580597917
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 10400,
+      "bit_errors": 2400,
+      "mse": 0.5451760656411145
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 10400,
+      "bit_errors": 0,
+      "mse": 1.5455795211547733e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 10400,
+      "bit_errors": 0,
+      "mse": 1.637526379668965e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 10400,
+      "bit_errors": 0,
+      "mse": 1.637526379668965e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 20800,
+      "bit_errors": 5565,
+      "mse": 0.5426332833328955
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 20800,
+      "bit_errors": 2308,
+      "mse": 0.5552491305608013
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 20800,
+      "bit_errors": 2308,
+      "mse": 0.5552491305608013
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 20800,
+      "bit_errors": 2308,
+      "mse": 0.5552491305608013
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 20800,
+      "bit_errors": 5426,
+      "mse": 0.5460764658146566
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 20800,
+      "bit_errors": 0,
+      "mse": 1.5616743695515601e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 20800,
+      "bit_errors": 0,
+      "mse": 1.6455323222993257e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 20800,
+      "bit_errors": 0,
+      "mse": 1.6455323222993257e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 31200,
+      "bit_errors": 10508,
+      "mse": 0.5409540335631232
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 31200,
+      "bit_errors": 5673,
+      "mse": 0.4882780907780027
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 31200,
+      "bit_errors": 5673,
+      "mse": 0.4882780907780026
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 31200,
+      "bit_errors": 5673,
+      "mse": 0.4882780907780026
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 31200,
+      "bit_errors": 10671,
+      "mse": 0.5504805910323624
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 31200,
+      "bit_errors": 0,
+      "mse": 1.6008774143118487e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 31200,
+      "bit_errors": 0,
+      "mse": 1.6983235435595524e-31
+    },
+    {
+      "channel": "fixed",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 31200,
+      "bit_errors": 0,
+      "mse": 1.6983235435595524e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 5200,
+      "bit_errors": 790,
+      "mse": 0.6700019847325351
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 5200,
+      "bit_errors": 55,
+      "mse": 0.2679131243964779
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 5200,
+      "bit_errors": 55,
+      "mse": 0.26791312439647785
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 5200,
+      "bit_errors": 55,
+      "mse": 0.26791312439647785
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 5200,
+      "bit_errors": 600,
+      "mse": 0.6733731566227771
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 1.1735214875931152e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 1.5272237348917662e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 2,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 5200,
+      "bit_errors": 0,
+      "mse": 1.5272237348917662e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 10400,
+      "bit_errors": 2714,
+      "mse": 0.6685325534828755
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 10400,
+      "bit_errors": 334,
+      "mse": 0.29026922387165455
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 10400,
+      "bit_errors": 334,
+      "mse": 0.29026922387165455
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 10400,
+      "bit_errors": 334,
+      "mse": 0.29026922387165455
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 10400,
+      "bit_errors": 2800,
+      "mse": 0.673373156622777
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 10400,
+      "bit_errors": 0,
+      "mse": 1.186396549495699e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 10400,
+      "bit_errors": 0,
+      "mse": 1.5286550413973274e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 4,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 10400,
+      "bit_errors": 0,
+      "mse": 1.5286550413973274e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 20800,
+      "bit_errors": 6796,
+      "mse": 0.673276650645743
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 20800,
+      "bit_errors": 2256,
+      "mse": 0.32762854068749214
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 20800,
+      "bit_errors": 2256,
+      "mse": 0.32762854068749214
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 20800,
+      "bit_errors": 2256,
+      "mse": 0.32762854068749214
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 20800,
+      "bit_errors": 6524,
+      "mse": 0.672012623519088
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 20800,
+      "bit_errors": 0,
+      "mse": 1.232061829961693e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 20800,
+      "bit_errors": 0,
+      "mse": 1.5801573710793872e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 16,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 20800,
+      "bit_errors": 0,
+      "mse": 1.5801573710793872e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "none",
+      "n_bits": 31200,
+      "bit_errors": 11639,
+      "mse": 0.6749318318892126
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "zf",
+      "n_bits": 31200,
+      "bit_errors": 5863,
+      "mse": 0.28752997536744856
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse",
+      "n_bits": 31200,
+      "bit_errors": 5863,
+      "mse": 0.28752997536744856
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 0,
+      "cp_sufficient": false,
+      "method": "mmse_raw",
+      "n_bits": 31200,
+      "bit_errors": 5863,
+      "mse": 0.28752997536744856
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "none",
+      "n_bits": 31200,
+      "bit_errors": 11552,
+      "mse": 0.6827118141200667
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "zf",
+      "n_bits": 31200,
+      "bit_errors": 0,
+      "mse": 1.2861804613989742e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse",
+      "n_bits": 31200,
+      "bit_errors": 0,
+      "mse": 1.6358789688242276e-31
+    },
+    {
+      "channel": "rayleigh_static",
+      "order": 64,
+      "cp_length": 16,
+      "cp_sufficient": true,
+      "method": "mmse_raw",
+      "n_bits": 31200,
+      "bit_errors": 0,
+      "mse": 1.6358789688242276e-31
+    }
+  ],
+  "numpy_version": "2.5.4"
+}

@@ -15,6 +15,9 @@ python experiments/06_ber_comparison.py
 python experiments/07_fft_ifft.py
 python experiments/08_ofdm_transmitter.py
 python experiments/09_ofdm_awgn.py
+python experiments/10_cyclic_prefix.py
+python experiments/11_multipath_channel.py
+python experiments/12_channel_equalization.py
 ```
 
 Utiliser le Python du venv : `.venv/Scripts/python.exe` sous Windows ou
