@@ -9,7 +9,7 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
 La phase 2 est validée : AWGN, conversions énergétiques, BER/SER, intervalles de confiance
-et références théoriques exactes. **223 tests** ; courbes sur **43,2 millions de bits**.
+et références théoriques exactes. **257 tests** ; courbes sur **43,2 millions de bits**.
 La phase 3 est validée : FFT/IFFT unitaires, émetteur/récepteur OFDM, CP, DC/gardes nulles,
 validation AWGN sur 21,632 millions de bits. La phase 4 est validée : canal multitrajet, CP et égalisation connue ZF/MMSE.
 Synchronisation, estimation de canal, image et interface restent à développer.
@@ -121,3 +121,9 @@ le burst attendu et `channel_response=H`, calculé par `channels.frequency_respo
 Choisir `equalizer="zf"` ou `"mmse"` ; le mode MMSE par défaut prend son gain résiduel
 en compte pour les décisions. Les effets du CP et les IC conditionnels sont documentés dans
 [la note d’égalisation](docs/theory/07_equalization.md). Le canal n’est pas encore estimé.
+
+### Synchronisation — phase 5 en cours
+L’expérience 13 ajoute un CFO continu et une première correction par corrélation CP,
+avec timing et mémoire connus. Comparaison brute/estimée/oracle, ICI et RMSE.
+Les limites de capture modulo 1 et de dérive résiduelle sont mesurées explicitement.
+Voir [l’expérience](docs/experiments/13_frequency_offset.md). Pilotes et interpolation restent à réaliser.

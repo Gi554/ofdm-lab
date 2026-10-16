@@ -1,0 +1,155 @@
+{
+  "seed": 20261016,
+  "numpy_version": "2.5.4",
+  "n_bursts": 48,
+  "unique_transmitted_bits": 3744000,
+  "n_measurements": 144,
+  "estimation_trials": 400,
+  "noiseless_cases": [
+    {
+      "channel": "awgn",
+      "order": 4,
+      "offset": -0.3,
+      "estimate": -0.3,
+      "bit_errors": 0
+    },
+    {
+      "channel": "awgn",
+      "order": 4,
+      "offset": 0,
+      "estimate": 0.0,
+      "bit_errors": 0
+    },
+    {
+      "channel": "awgn",
+      "order": 4,
+      "offset": 0.3,
+      "estimate": 0.30000000000000004,
+      "bit_errors": 0
+    },
+    {
+      "channel": "awgn",
+      "order": 16,
+      "offset": -0.3,
+      "estimate": -0.30000000000000004,
+      "bit_errors": 0
+    },
+    {
+      "channel": "awgn",
+      "order": 16,
+      "offset": 0,
+      "estimate": 0.0,
+      "bit_errors": 0
+    },
+    {
+      "channel": "awgn",
+      "order": 16,
+      "offset": 0.3,
+      "estimate": 0.30000000000000004,
+      "bit_errors": 0
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "offset": -0.3,
+      "estimate": -0.29999999999999993,
+      "bit_errors": 0
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "offset": 0,
+      "estimate": 0.0,
+      "bit_errors": 0
+    },
+    {
+      "channel": "fixed",
+      "order": 4,
+      "offset": 0.3,
+      "estimate": 0.30000000000000004,
+      "bit_errors": 0
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "offset": -0.3,
+      "estimate": -0.30000000000000004,
+      "bit_errors": 0
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "offset": 0,
+      "estimate": 0.0,
+      "bit_errors": 0
+    },
+    {
+      "channel": "fixed",
+      "order": 16,
+      "offset": 0.3,
+      "estimate": 0.3,
+      "bit_errors": 0
+    }
+  ],
+  "all_noiseless_corrections_passed": true,
+  "cp_capture_interval": "[-0.5,0.5] modulo 1; endpoints ambiguous",
+  "channel_knowledge": "perfect H for ZF; known memory bound for CP correlation",
+  "estimation_statistics": [
+    {
+      "channel": "awgn",
+      "ebn0_db": 0,
+      "bias": 0.003175146864042792,
+      "rmse": 0.01001535293556419,
+      "wrapped_rmse": 0.01001535293556419
+    },
+    {
+      "channel": "awgn",
+      "ebn0_db": 6,
+      "bias": 3.5462220283888346e-07,
+      "rmse": 0.003803352593254564,
+      "wrapped_rmse": 0.003803352593254569
+    },
+    {
+      "channel": "awgn",
+      "ebn0_db": 12,
+      "bias": -0.0004107503989887101,
+      "rmse": 0.0015898481096150861,
+      "wrapped_rmse": 0.0015898481096150831
+    },
+    {
+      "channel": "awgn",
+      "ebn0_db": 18,
+      "bias": 2.817396305787312e-05,
+      "rmse": 0.0008097582314143568,
+      "wrapped_rmse": 0.0008097582314143606
+    },
+    {
+      "channel": "fixed",
+      "ebn0_db": 0,
+      "bias": 0.0009658574934921865,
+      "rmse": 0.011040056359896418,
+      "wrapped_rmse": 0.011040056359896423
+    },
+    {
+      "channel": "fixed",
+      "ebn0_db": 6,
+      "bias": -0.000677304899443425,
+      "rmse": 0.004528341133040629,
+      "wrapped_rmse": 0.004528341133040629
+    },
+    {
+      "channel": "fixed",
+      "ebn0_db": 12,
+      "bias": -0.00012734563046353287,
+      "rmse": 0.0024599757313379295,
+      "wrapped_rmse": 0.002459975731337934
+    },
+    {
+      "channel": "fixed",
+      "ebn0_db": 18,
+      "bias": 1.7124700563166395e-05,
+      "rmse": 0.0010167361268445774,
+      "wrapped_rmse": 0.0010167361268445803
+    }
+  ]
+}

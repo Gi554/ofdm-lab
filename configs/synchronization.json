@@ -1,0 +1,29 @@
+{
+  "seed": 20261016,
+  "n_ofdm_symbols": 500,
+  "orders": [
+    4,
+    16
+  ],
+  "offsets": [
+    0,
+    0.05,
+    0.15,
+    0.3,
+    0.49,
+    0.7
+  ],
+  "ebn0_db": [
+    12,
+    24
+  ],
+  "estimation_trials": 50,
+  "estimation_frames": 20,
+  "estimation_ebn0_db": [
+    0,
+    6,
+    12,
+    18
+  ],
+  "estimation_offset": 0.2
+}
