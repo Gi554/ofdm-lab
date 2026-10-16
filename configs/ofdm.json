@@ -1,0 +1,9 @@
+{
+  "seed": 20261016,
+  "n_fft": 64,
+  "n_active": 52,
+  "cp_length": 16,
+  "order": 16,
+  "spacing_hz": 15000,
+  "n_ofdm_symbols": 256
+}
