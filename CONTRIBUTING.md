@@ -23,10 +23,13 @@ Ne pas mélanger refonte de style et changement scientifique. Ne pas réécrire 
 `main` est la version validée et la branche par défaut. `staging` est la branche d’intégration.
 Le cycle normal de chaque fonctionnalité est :
 
-1. Mettre à jour les références distantes et créer `codex/<fonctionnalite>` depuis `origin/staging`.
+1. Mettre à jour les références distantes et créer `<fonctionnalite>` depuis `origin/staging`.
 2. Implémenter, tester, documenter, puis faire les commits et pousser la branche.
 3. Ouvrir une PR vers `staging`, attendre tous les contrôles et fusionner avec un **merge commit**.
 4. Ouvrir une PR de `staging` vers `main`, attendre tous les contrôles et fusionner avec un **merge commit**.
+
+Les branches portent directement le nom de la fonctionnalité, sans préfixe d’outil
+(par exemple `awgn-channel` ou `ber-ser-validation`).
 
 Le propriétaire a autorisé ce cycle complet pour chaque fonctionnalité. Aucune confirmation
 supplémentaire de routine n’est nécessaire. Les échecs et les conflits doivent être corrigés

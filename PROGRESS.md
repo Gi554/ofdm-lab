@@ -79,7 +79,7 @@ Configurations d’assistants, environnements, caches, secrets et journaux locau
 Identité de commit : compte GitHub du propriétaire, avec adresse noreply.
 
 Validation GitHub du socle : réussie sur Python 3.11, 3.12 et 3.13.
-La branche codex/qam-modulations contient un commit 16-QAM, un commit 64-QAM puis
+La branche qam-modulations contient un commit 16-QAM, un commit 64-QAM puis
 les expériences, résultats et explications. Les journaux locaux ne sont pas publiés.
 
 ## Processus Git permanent
@@ -120,3 +120,11 @@ Figures : quatre nuages AWGN, courbes BER et SER, écart théorique de l’appro
 Notebook 02 exécuté cellule par cellule avec Python ; noyau Jupyter interactif non testé.
 La dépendance entre erreurs de bits d’un symbole QAM est prise en compte par les IC
 simultanés par position. Les modèles restent sans codage, CP, pilotes ou défaut de synchronisation.
+
+## Convention de nommage mise à jour
+À la demande du propriétaire, les branches de fonctionnalité portent directement leur nom,
+sans préfixe d’outil. Les quatre branches existantes ont été renommées sur GitHub et en local :
+awgn-channel, ber-ser-validation, qam-modulations, workflow-staging. Les commits sont conservés.
+La règle persistante est mise à jour dans AGENTS.md et CONTRIBUTING.md.
+Le processus PR → staging → PR → main, les protections et les merge commits restent applicables.
+La phase 2 est fusionnée dans main (PR #7), et sa dernière CI sur main est réussie.

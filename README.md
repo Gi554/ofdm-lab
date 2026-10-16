@@ -71,7 +71,7 @@ Licence MIT. Aucun algorithme de chaîne OFDM fourni par une bibliothèque exter
 
 ## Processus de développement
 
-`codex/<fonctionnalite>` → PR → **staging** → PR → **main**.
+`<fonctionnalite>` → PR → **staging** → PR → **main**.
 Les deux PR sont fusionnées après réussite des contrôles, avec des merge commits qui
 conservent les commits par fonctionnalité. `main` reste la branche par défaut.
 Voir [CONTRIBUTING.md](CONTRIBUTING.md) et [AGENTS.md](AGENTS.md).

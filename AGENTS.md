@@ -8,7 +8,9 @@ Le dépôt GitHub est public : https://github.com/Gi554/ofdm-lab.
 ## Processus Git obligatoire
 
 - `main` contient les versions validées ; `staging` sert à l’intégration.
-- Démarrer chaque fonctionnalité sur une branche `codex/<fonctionnalite>` depuis `origin/staging` à jour.
+- Démarrer chaque fonctionnalité sur une branche `<fonctionnalite>` depuis `origin/staging` à jour.
+- Utiliser directement le nom de la fonctionnalité, sans préfixe d’outil :
+  `awgn-channel`, `ber-ser-validation`, `qam-modulations`, etc.
 - Faire des commits cohérents par fonctionnalité, avec tests et documentation associés.
 - Pousser la branche et ouvrir une PR vers `staging` ; attendre la réussite de tous les contrôles.
 - Fusionner la PR avec un **merge commit** pour conserver les commits de chaque fonctionnalité.
