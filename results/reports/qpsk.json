@@ -1,0 +1,10 @@
+{
+  "n_bits": 10000,
+  "n_symbols": 5000,
+  "bit_errors": 0,
+  "ber_observed": 0.0,
+  "mean_symbol_energy": 1.0,
+  "channel": "ideal, sans bruit, phase connue",
+  "seed": 20261016,
+  "numpy_version": "2.5.4"
+}
