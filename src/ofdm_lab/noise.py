@@ -70,7 +70,9 @@ def noise_variance(ebn0_db: float, bits_per_symbol: int, symbol_energy: float = 
     return result
 
 
-def add_awgn(signal: ArrayLike, variance: float, seed: int | None = None) -> NDArray[np.complex128]:
+def add_awgn(
+    signal: ArrayLike, variance: float, seed: int | np.random.SeedSequence | None = None
+) -> NDArray[np.complex128]:
     """Ajouter n ~ CN(0, variance) à un vecteur 1D, via un générateur local.
 
     Une variance nulle renvoie une copie complexe du signal, sans bruit.

@@ -19,3 +19,8 @@
 - **N0 discret** : variance complexe totale du bruit dans la convention du laboratoire.
 - **Circularité** : invariance de la loi du bruit complexe par rotation de phase.
 - **SNR** : rapport puissance moyenne du signal sur puissance moyenne du bruit.
+
+- **Intervalle de confiance (IC)** : procédure dont la couverture répétée du paramètre est au moins le niveau annoncé, sous les hypothèses.
+- **Clopper–Pearson** : intervalle binomial exact, généralement conservateur.
+- **Bonferroni** : répartition du risque global entre plusieurs bornes pour garantir leur couverture simultanée.
+- **Hamming** : nombre de positions binaires différentes entre deux mots.

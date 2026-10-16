@@ -1,0 +1,12 @@
+{
+  "same_configuration_repeat_identical": true,
+  "files_compared": 6,
+  "files": [
+    "results/datasets/awgn.csv",
+    "results/reports/awgn.json",
+    "results/datasets/ber_comparison.csv",
+    "results/datasets/awgn_theory.csv",
+    "results/reports/ber_comparison.json",
+    "results/reports/ber_summary.json"
+  ]
+}

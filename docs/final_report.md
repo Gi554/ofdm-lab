@@ -1,10 +1,11 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phase 1 validée ; phase 2 en cours, phases 3 à 7 à réaliser.**
+**Rapport progressif — phases 1 et 2 validées ; phases 3 à 7 à réaliser.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
-Les résultats détaillés de phase 1 sont référencés dans PROGRESS.md et les mesures JSON.
+Le canal AWGN, les compteurs BER/SER et les références exactes complètent ce socle.
+Les résultats détaillés des phases 1 et 2 sont référencés dans PROGRESS.md et les mesures JSON.
 ## 2. Introduction générale
 L’objectif est de construire une chaîne OFDM reproductible, en privilégiant sa validation.
 ## 3. Contexte des communications numériques
@@ -25,21 +26,30 @@ Les décisions cohérentes idéales sont disponibles ; le récepteur OFDM reste 
 Voir methodology.md : graine fixe, sorties traçables et validation déterministe.
 ## 10. Résultats des simulations
 Sur 10 000 bits (graine 20261016), 0 erreur BPSK et 0 erreur QPSK en canal idéal ;
-énergie moyenne Es=1 dans les deux cas. Les 51 tests passent. Six exports CSV/JSON
+énergie moyenne Es=1 dans les deux cas. Les 128 tests passent. Six exports CSV/JSON
 sont identiques après réexécution. Consulter results/reports pour les mesures détaillées.
 Sur 120 000 bits QAM, aucune erreur binaire ou symbole en canal idéal. Distances minimales
 mesurées : 0,632456 (16-QAM) et 0,308607 (64-QAM). L’énergie moyenne de chaque alphabet
 est 1 ; celles des tirages sont 1,00264 et 1,007333. Quatre exports QAM sont identiques
 après réexécution. Voir experiments/04_qam.md pour la méthode et les figures.
 ## 11. Analyse des performances BER
-La restitution idéale ne mesure pas une performance sous AWGN ; étude à venir.
+Les quatre modulations ont été simulées sur AWGN pour 36 points, soit 43 200 000 bits.
+À Eb/N0=6 dB, BER BPSK=0,0024225 (2 907 erreurs) et QPSK=0,00246833 (2 962 erreurs),
+chacun sur 1 200 000 bits ; référence commune 0,002388291. Les BER QAM mesurés valent
+0,0281733 en 16-QAM et 0,0835975 en 64-QAM. Les données intégrales, effectifs et IC sont
+dans results/datasets/ber_comparison.csv.
+36/36 références BER et 33/36 références SER sont dans leurs IC ponctuels 95 %. Toutes
+sont dans l’enveloppe simultanée 99 %. Ces exclusions ponctuelles sont compatibles avec
+le risque statistique, sans modification des graines ni des résultats.
+Voir experiments/06_ber_comparison.md et theory/04_ber_ser.md pour les hypothèses,
+les bornes après zéro erreur, et le traitement des dépendances binaires QAM.
 ## 12. Étude de l’égalisation et de l’estimation de canal
 Non réalisée.
 ## 13. Application à la transmission d’image
 Non réalisée.
 ## 14. Limites du modèle
 AWGN idéal disponible ; pas encore de canal multitrajet, de mise en forme, de codage
-ni de défaut de synchronisation. Les BER sous bruit restent à étudier.
+ni de défaut de synchronisation. Les événements très rares sont peu résolus par l’effectif fixe ; les IC le signalent.
 ## 15. Perspectives : MIMO-OFDM, 5G NR et radio logicielle
 Extensions ultérieures ; aucune conformité à une norme n’est revendiquée.
 ## 16. Conclusion générale
@@ -50,5 +60,7 @@ David Tse et Pramod Viswanath, *Fundamentals of Wireless Communication*, Cambrid
 [Page officielle des auteurs](https://web.stanford.edu/~dntse/wireless_book.html),
 appendice A consacré à la détection et à l’estimation en bruit gaussien ; référence vérifiée le 16 octobre 2026.
 Les équations du premier lot sont explicitées intégralement dans la documentation théorique.
+[SciPy : méthode Clopper–Pearson](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats._result_classes.BinomTestResult.proportion_ci.html),
+documentation officielle vérifiée le 16 octobre 2026.
 ## 18. Annexes techniques
 Code : src/ofdm_lab ; configuration : configs/fundamentals.json ; tests : tests/.
