@@ -23,8 +23,8 @@ def modulate_qpsk(bits: ArrayLike) -> NDArray[np.complex128]:
 
 def _qam_parameters(order: int) -> tuple[int, int, float]:
     """Nombre de bits par axe, niveaux par axe et facteur de normalisation."""
-    if isinstance(order, bool) or not isinstance(order, (int, np.integer)) or order != 16:
-        raise ValueError("L'ordre QAM doit être l'entier 16.")
+    if isinstance(order, bool) or not isinstance(order, (int, np.integer)) or order not in (16, 64):
+        raise ValueError("L'ordre QAM doit être l'entier 16 ou 64.")
     axis_bits = (int(order).bit_length() - 1) // 2
     return axis_bits, 2**axis_bits, float(np.sqrt(2 * (order - 1) / 3))
 

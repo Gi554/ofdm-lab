@@ -5,7 +5,7 @@ import pytest
 
 from ofdm_lab import demodulate_qam, generate_bits, modulate_qam
 
-ORDERS = [16]
+ORDERS = [16, 64]
 
 
 def alphabet(order):
@@ -88,3 +88,13 @@ def test_invalid_qam_orders(order):
         modulate_qam([], order)
     with pytest.raises(ValueError):
         demodulate_qam([], order)
+
+
+def test_known_64qam_axis_mapping():
+    # Gray 000,001,011,010,110,111,101,100 -> niveaux +7,+5,+3,+1,-1,-3,-5,-7.
+    gray = np.array([0, 1, 3, 2, 6, 7, 5, 4])
+    axis_bits = ((gray[:, None] >> np.array([2, 1, 0])) & 1).astype(np.uint8)
+    labels = np.column_stack((axis_bits, np.zeros((8, 3), dtype=np.uint8)))
+    expected = (np.arange(7, -8, -2) + 7j) / np.sqrt(42)
+    np.testing.assert_allclose(modulate_qam(labels.ravel(), 64), expected)
+    np.testing.assert_array_equal(demodulate_qam([0j], 64), [0, 1, 0, 0, 1, 0])
