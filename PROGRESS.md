@@ -3,7 +3,7 @@
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-Les phases 2 à 7 ne sont pas encore réalisées.
+La phase 2 est en cours ; les phases 3 à 7 ne sont pas encore réalisées.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
@@ -89,3 +89,12 @@ Chaque fonctionnalité suit commits → PR vers staging → contrôles → merge
 PR staging → main → contrôles → merge. Les fusions conservent les commits.
 Cette instruction est enregistrée dans AGENTS.md et CONTRIBUTING.md.
 La PR QAM #1 a été redirigée vers staging puis fusionnée après contrôles réussis.
+
+## Phase 2 — Premier lot AWGN
+Canal additif gaussien complexe implémenté avec N0=Es/(k Eb/N0_lin).
+Conversions Eb/N0 → Es/N0 et Es/N0 → SNR avec hypothèses explicites.
+71 tests réussis, Ruff et formatage conformes. Les tests statistiques emploient 400 000
+échantillons et des tolérances de six erreurs-types sur les moments et corrélations.
+Expérience 5 exécutée : 48 000 bits par modulation, 12 cas, Eb/N0=0,6,12 dB.
+Écart relatif maximal de puissance : 1,225 %. Pas de renormalisation a posteriori.
+Quatre figures, CSV et JSON générés. L’expérience BER/SER reste à réaliser avant validation de phase 2.

@@ -10,6 +10,7 @@ python experiments/01_binary_generation.py
 python experiments/02_bpsk.py
 python experiments/03_qpsk.py
 python experiments/04_qam.py
+python experiments/05_awgn.py
 ```
 
 Utiliser le Python du venv : `.venv/Scripts/python.exe` sous Windows ou

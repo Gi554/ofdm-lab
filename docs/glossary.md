@@ -15,3 +15,7 @@
 
 - **QAM** : modulation d’amplitude en quadrature, combinant plusieurs niveaux I et Q.
 - **Distance minimale** : plus petite distance euclidienne entre deux points de constellation.
+
+- **N0 discret** : variance complexe totale du bruit dans la convention du laboratoire.
+- **Circularité** : invariance de la loi du bruit complexe par rotation de phase.
+- **SNR** : rapport puissance moyenne du signal sur puissance moyenne du bruit.
