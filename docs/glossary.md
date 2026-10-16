@@ -35,3 +35,7 @@
 - **MMSE** : estimation linéaire minimisant l’erreur quadratique moyenne, généralement biaisée.
 - **PDP** : profil de puissances moyennes des trajets (Power Delay Profile).
 - **Rayleigh statique** : gains complexes gaussiens tirés une fois et fixes pendant le burst.
+
+- **CFO** : différence de fréquence d’oscillateurs, normalisée ici par l’espacement entre porteuses.
+- **ICI** : interférence entre sous-porteuses dans la projection FFT du récepteur.
+- **Oracle** : témoin utilisant une grandeur réelle connue uniquement par la simulation.

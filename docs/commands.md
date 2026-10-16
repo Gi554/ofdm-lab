@@ -25,3 +25,8 @@ Utiliser le Python du venv : `.venv/Scripts/python.exe` sous Windows ou
 de chaque exécution. Le bilan réellement obtenu est consigné dans PROGRESS.md.
 Les fichiers requirements-lock.txt et configs/fundamentals.json décrivent l’environnement
 résolu et les paramètres scientifiques des premières expériences.
+
+## Décalage fréquentiel
+```powershell
+python experiments/13_frequency_offset.py
+```

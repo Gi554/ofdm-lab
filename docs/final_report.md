@@ -86,3 +86,12 @@ Les expériences de convolution, de statistiques Rayleigh et d’égalisation so
 séparément dans experiments/10_cyclic_prefix.md, 11_multipath_channel.md et 12_channel_equalization.md.
 Les références de la réalisation Rayleigh sont conditionnelles ; aucune moyenne d’ensemble
 BER Rayleigh n’est revendiquée. La connaissance parfaite de H précède volontairement son estimation.
+
+## Expérience 13 — Première synchronisation fréquentielle
+Le CFO est appliqué sans remise à zéro de phase sur les symboles. La correction CP
+restitue les 12 cas sans bruit testés. Sous bruit, elle réduit souvent le BER mais
+l’erreur résiduelle accumulée sur un long burst peut rester importante, même à CFO nul.
+L’oracle corrige avec le CFO réel ; il constitue un témoin, pas une méthode pratique.
+3 744 000 bits distincts, 48 bursts, 144 mesures et 400 essais de RMSE documentés dans
+[l’expérience 13](experiments/13_frequency_offset.md). La capture est modulo 1 et
+nécessite un début et une mémoire connus. Pas encore de pilotes ni d’estimation de H.
