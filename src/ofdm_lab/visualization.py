@@ -30,10 +30,17 @@ def plot_bits(bits, path: Path):
 
 def plot_constellation(symbols, labels, title: str, path: Path):
     """Tracer des points idéaux annotés, axes I/Q normalisés."""
-    fig, ax = plt.subplots(figsize=(5, 5))
+    dense = len(labels) > 16
+    fig, ax = plt.subplots(figsize=(9, 9) if dense else (5, 5))
     ax.scatter(symbols.real, symbols.imag, label="Symboles idéaux")
     for z, label in zip(symbols, labels, strict=True):
-        ax.annotate(label, (z.real, z.imag), xytext=(8, 8), textcoords="offset points")
+        ax.annotate(
+            label,
+            (z.real, z.imag),
+            xytext=(6, 6),
+            textcoords="offset points",
+            fontsize=8 if dense else 10,
+        )
     ax.set(
         xlabel="I (amplitude normalisée)",
         ylabel="Q (amplitude normalisée)",

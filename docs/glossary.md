@@ -12,3 +12,6 @@
 - **AWGN** : bruit additif blanc gaussien (phase suivante).
 - **OFDM** : multiplexage de sous-porteuses orthogonales (phase 3).
 - **CP** : préfixe cyclique, copie de la fin du symbole OFDM.
+
+- **QAM** : modulation d’amplitude en quadrature, combinant plusieurs niveaux I et Q.
+- **Distance minimale** : plus petite distance euclidienne entre deux points de constellation.
