@@ -2,12 +2,32 @@ name: Validation scientifique
 
 on:
   push:
+    branches: [main, staging]
   pull_request:
+    branches: [main, staging]
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  branch-policy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Vérifier la promotion vers main
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: |
+          if [ "$BASE_BRANCH" = "main" ] && [ "$HEAD_BRANCH" != "staging" ]; then
+            echo "Une PR vers main doit provenir de staging."
+            exit 1
+          fi
+
   validate:
     runs-on: ubuntu-latest
     strategy:
