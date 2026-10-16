@@ -160,3 +160,34 @@ def plot_qam_approximation(curves, path: Path):
     fig.tight_layout()
     fig.savefig(path, dpi=160, bbox_inches="tight")
     plt.close(fig)
+
+
+def plot_transform_experiment(waveform, spectrum, gram, sample_rate_hz: float, path: Path):
+    """Signaux et matrice de Gram effectivement calculés, avec unités physiques choisies."""
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+    n = np.arange(waveform.size)
+    axes[0].plot(n / sample_rate_hz * 1e6, waveform.real, label="I")
+    axes[0].plot(n / sample_rate_hz * 1e6, waveform.imag, label="Q")
+    axes[0].set(xlabel="Temps (µs)", ylabel="Amplitude normalisée", title="IFFT : signal temporel")
+    axes[0].legend()
+    axes[0].grid(alpha=0.3)
+    axes[1].stem(
+        np.fft.fftshift(np.fft.fftfreq(len(spectrum), d=1 / sample_rate_hz)) / 1e3,
+        np.fft.fftshift(abs(spectrum)),
+        label="|X[k]|",
+    )
+    axes[1].set(
+        xlabel="Fréquence (kHz)", ylabel="Amplitude normalisée", title="Alphabet fréquentiel"
+    )
+    axes[1].legend()
+    axes[1].grid(alpha=0.3)
+    handle = axes[2].imshow(abs(gram), origin="lower", vmin=0, vmax=1)
+    axes[2].set(
+        xlabel="Indice de sous-porteuse",
+        ylabel="Indice de sous-porteuse",
+        title="Orthogonalité : |BᴴB|",
+    )
+    fig.colorbar(handle, ax=axes[2], label="Produit scalaire (sans unité)")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
