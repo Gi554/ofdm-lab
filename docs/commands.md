@@ -35,3 +35,8 @@ python experiments/13_frequency_offset.py
 ```powershell
 python experiments/14_channel_estimation.py
 ```
+
+## Comparaison globale
+```powershell
+python experiments/15_global_comparison.py
+```
