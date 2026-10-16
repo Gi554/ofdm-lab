@@ -1,0 +1,27 @@
+{
+  "seed": 20261017,
+  "orders": [
+    2,
+    4,
+    16,
+    64
+  ],
+  "ebn0_db": [
+    6,
+    18
+  ],
+  "fft_sizes": [
+    64,
+    128
+  ],
+  "cp_lengths": [
+    0,
+    16
+  ],
+  "pilot_spacings": [
+    4,
+    8
+  ],
+  "sample_rate_hz": 960000,
+  "n_ofdm_symbols": 128
+}

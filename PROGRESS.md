@@ -1,9 +1,9 @@
-# Suivi OFDM Lab — 16 octobre 2026
+# Suivi OFDM Lab — 17 octobre 2026
 
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-Les phases 1 à 4 sont validées. La phase 5 est en cours ; les phases 6 et 7 restent à réaliser.
+Les phases 1 à 5 sont validées. Les phases 6 et 7 restent à réaliser.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
@@ -14,7 +14,7 @@ README, licence MIT, pyproject.toml et inventaire de dépendances requirements-l
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **283 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **293 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -65,10 +65,9 @@ Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
 qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
 
 ## Prochaines étapes
-1. Phase 5 : décalage fréquentiel (CFO), estimation et correction.
-2. Pilotes, estimation de canal et interpolation, avec comparaison au canal connu.
-3. Comparaisons globales avant transmission d’image et interface Streamlit.
-Le rapport reste progressif ; les phases 5 à 7 ne sont pas encore validées.
+1. Phase 6 : transmission et reconstruction d’image, tramage, erreurs et bourrage explicites.
+2. Phase 7 : interface Streamlit réutilisant le moteur validé et exports utilisateur.
+Le rapport reste progressif ; les phases 1 à 5 sont validées.
 
 ## Organisation du dépôt public
 Dépôt : https://github.com/Gi554/ofdm-lab ; branche principale main.
@@ -197,3 +196,16 @@ estimé 0,144833. MSE estimée 0,130398 contre espérance 0,130950 : biais d’i
 Quatre exports CSV/JSON reproductibles ; figure vérifiée visuellement et notebook 06
 exécuté directement avec Python (mode Jupyter interactif non testé).
 La phase 5 reste en cours : expérience 15 de comparaison globale à réaliser.
+
+## Phase 5 — Bilan final (expérience 15)
+293 tests réussis. Comparaison appariée none/H parfait ZF-MMSE/H estimé ZF-MMSE.
+192 essais, 960 mesures et 4 832 256 bits distincts ; Fs960kHz et K/N=13/16 fixés.
+Quatre modulations, FFT64/128, CP0/16, pas pilotes4/8, Eb total/N0=6/18dB, trois canaux.
+Les 128 références BER conditionnelles à CP suffisant passent l’enveloppe globale >=99 %.
+Les cas à CP court restent descriptifs, sans référence diagonale ni IC binomial.
+ZF/MMSE à gain compensé ont les mêmes compteurs binaires ; MSE des symboles distinctes.
+Quatre exports CSV/JSON identiques après réexécution ; figure vérifiée et notebook 07
+exécuté directement avec Python, noyau Jupyter interactif non testé.
+CFO et correction CP, pilotes et interpolation, comparaison globale sont validés dans
+leurs hypothèses respectives. La comparaison globale garde CFO nul et timing parfait.
+La phase 5 est terminée. Prochaine étape : phase 6, transmission d’image.

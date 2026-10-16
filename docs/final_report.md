@@ -1,6 +1,6 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phases 1 à 4 validées ; phases 5 à 7 à réaliser.**
+**Rapport progressif — phases 1 à 5 validées ; phases 6 et 7 à réaliser.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
@@ -104,4 +104,13 @@ Le bilan Eb total inclut le coût pilote et le CP déterministe ; la MSE sépare
 et bruit avec une référence analytique. L’interpolation conserve un plancher sur les
 canaux très sélectifs : H estimé ne remplace pas le témoin parfait.
 Voir [l’expérience 14](experiments/14_channel_estimation.md) pour mesures et limites.
-La comparaison globale, l’image et l’interface restent à développer.
+La comparaison globale est traitée dans l’expérience 15 ; l’image et l’interface restent à développer.
+
+## Expérience 15 — Comparaison globale et bilan de phase 5
+192 essais couvrent modulations, FFT, CP, canaux, égaliseurs et qualité de H, à ressources
+communes entre cinq modes. 4 832 256 bits distincts et 960 mesures ; 128 références BER
+passent une enveloppe simultanée au moins 99 %. Les cas ISI restent descriptifs.
+Les compromis BER, MSE et débit sont visibles dans [l’expérience 15](experiments/15_global_comparison.md).
+La phase 5 est validée dans les hypothèses documentées : correction CFO à début connu
+étudiée séparément, LS interpolé par trame, comparaison globale à timing parfait/CFO nul.
+Les phases de transmission d’image et de laboratoire Streamlit restent à réaliser.
