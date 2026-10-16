@@ -329,3 +329,44 @@ def plot_channel_profiles(fixed, fading, energies, sample_rate_hz: float, path: 
     fig.tight_layout()
     fig.savefig(path, dpi=160, bbox_inches="tight")
     plt.close(fig)
+
+
+def plot_equalization_results(frame, path: Path):
+    """MSE et BER 16-QAM : distinguer estimation LMMSE, gain de décision et CP court."""
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+    for column, name in enumerate(["fixed", "rayleigh_static"]):
+        subset = frame[(frame.channel == name) & (frame.order == 16)]
+        for method, group in subset[subset.cp_sufficient].groupby("method", sort=False):
+            positive = group[group.ber > 0]
+            handle = axes[0, column].errorbar(
+                positive.ebn0_db,
+                positive.ber,
+                yerr=[positive.ber - positive.ber_ci_lower, positive.ber_ci_upper - positive.ber],
+                fmt="o-",
+                capsize=2,
+                label=method,
+            )
+            zero = group[group.ber == 0]
+            axes[0, column].scatter(
+                zero.ebn0_db, zero.ber_ci_upper, marker="v", color=handle[0].get_color()
+            )
+            axes[1, column].semilogy(group.ebn0_db, group.mse, "o-", label=method)
+        short = subset[(~subset.cp_sufficient) & (subset.method == "zf")]
+        axes[0, column].semilogy(short.ebn0_db, short.ber, "x--", label="ZF CP court (descriptif)")
+        axes[0, column].set(
+            title=name + " — BER 16-QAM", ylabel="BER (sans unité)", xlabel="Eb/N0 émetteur (dB)"
+        )
+        axes[1, column].set(
+            title=name + " — MSE des estimations",
+            ylabel="Erreur quadratique (unités normalisées)",
+            xlabel="Eb/N0 émetteur (dB)",
+        )
+    for ax in axes.ravel():
+        ax.grid(which="both", alpha=0.3)
+        ax.legend(fontsize=8)
+    fig.suptitle(
+        "Canal connu : MMSE avec gain compensé = décisions ZF ; MMSE brut conserve le biais"
+    )
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)

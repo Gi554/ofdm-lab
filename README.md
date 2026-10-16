@@ -9,9 +9,10 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
 La phase 2 est validée : AWGN, conversions énergétiques, BER/SER, intervalles de confiance
-et références théoriques exactes. **181 tests** ; courbes sur **43,2 millions de bits**.
+et références théoriques exactes. **223 tests** ; courbes sur **43,2 millions de bits**.
 La phase 3 est validée : FFT/IFFT unitaires, émetteur/récepteur OFDM, CP, DC/gardes nulles,
-validation AWGN sur 21,632 millions de bits. Multitrajets, synchronisation, image et interface suivent.
+validation AWGN sur 21,632 millions de bits. La phase 4 est validée : canal multitrajet, CP et égalisation connue ZF/MMSE.
+Synchronisation, estimation de canal, image et interface restent à développer.
 Voir [PROGRESS.md](PROGRESS.md) pour les mesures et validations exécutées.
 
 ## Installation (PowerShell, Python 3.11 ou ultérieur)
@@ -39,6 +40,9 @@ Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les conventions de commits et de va
 .\.venv\Scripts\python.exe experiments/07_fft_ifft.py
 .\.venv\Scripts\python.exe experiments/08_ofdm_transmitter.py
 .\.venv\Scripts\python.exe experiments/09_ofdm_awgn.py
+.\.venv\Scripts\python.exe experiments/10_cyclic_prefix.py
+.\.venv\Scripts\python.exe experiments/11_multipath_channel.py
+.\.venv\Scripts\python.exe experiments/12_channel_equalization.py
 ```
 
 Les scripts lisent les configurations de `configs/` et écrasent leurs résultats dans `results/` :
@@ -109,3 +113,11 @@ received_bits = receive(transmit(bits, config).waveform, config).bits
 Les blocs doivent être complets ; début et configuration sont connus.
 `ofdm_simulation.simulate_ofdm_awgn` utilise `reference="useful"` ou `"total"`
 pour inclure explicitement le coût du CP dans Eb. Voir docs/theory/05_fft_ofdm.md.
+
+## Canal connu et égalisation
+
+`channels.apply_multipath` conserve la convolution complète. Le récepteur reçoit explicitement
+le burst attendu et `channel_response=H`, calculé par `channels.frequency_response`.
+Choisir `equalizer="zf"` ou `"mmse"` ; le mode MMSE par défaut prend son gain résiduel
+en compte pour les décisions. Les effets du CP et les IC conditionnels sont documentés dans
+[la note d’égalisation](docs/theory/07_equalization.md). Le canal n’est pas encore estimé.

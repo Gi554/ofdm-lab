@@ -1,6 +1,6 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phases 1 à 3 validées ; phases 4 à 7 à réaliser.**
+**Rapport progressif — phases 1 à 4 validées ; phases 5 à 7 à réaliser.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
@@ -18,7 +18,8 @@ N=64, Δf=15 kHz, Fs=960 kHz ; erreur d’inversion mesurée 5,66e-16.
 ## 6. Modélisation des canaux radio
 AWGN complexe disponible : E|n|²=N0 et N0/2 par axe. Expérience 5 : 12 cas,
 écart relatif maximal de puissance 1,225 %. Voir theory/03_awgn.md et experiments/05_awgn.md.
-La convolution multitrajet reste à réaliser.
+Canal FIR causal complet et Rayleigh statique disponibles. Le CP couvrant la mémoire 6
+ramène l’erreur de diagonalisation de 0,0893 à 6,32e-32 sans bruit.
 ## 7. Architecture de l’émetteur
 Les mappings BPSK/QPSK/16-QAM/64-QAM sont disponibles. Allocation symétrique sans DC/Nyquist, IFFT unitaire et copie cyclique implémentées.
 ## 8. Architecture du récepteur
@@ -27,7 +28,7 @@ Les décisions cohérentes idéales sont disponibles ; le récepteur OFDM à dé
 Voir methodology.md : graine fixe, sorties traçables et validation déterministe.
 ## 10. Résultats des simulations
 Sur 10 000 bits (graine 20261016), 0 erreur BPSK et 0 erreur QPSK en canal idéal ;
-énergie moyenne Es=1 dans les deux cas. Les 181 tests passent. Six exports CSV/JSON
+énergie moyenne Es=1 dans les deux cas. Les 223 tests passent. Six exports CSV/JSON
 sont identiques après réexécution. Consulter results/reports pour les mesures détaillées.
 Sur 120 000 bits QAM, aucune erreur binaire ou symbole en canal idéal. Distances minimales
 mesurées : 0,632456 (16-QAM) et 0,308607 (64-QAM). L’énergie moyenne de chaque alphabet
@@ -45,11 +46,17 @@ le risque statistique, sans modification des graines ni des résultats.
 Voir experiments/06_ber_comparison.md et theory/04_ber_ser.md pour les hypothèses,
 les bornes après zéro erreur, et le traitement des dépendances binaires QAM.
 ## 12. Étude de l’égalisation et de l’estimation de canal
-Non réalisée.
+Égalisation ZF et MMSE connue validée sur 64 essais appariés, 10,816 millions de bits.
+Les 128 comparaisons BER/SER conditionnelles passent l’enveloppe simultanée 99 %.
+En 16-QAM fixe à 12 dB, BER brut 0,269611 contre 0,033784 égalisé. Le MMSE réduit
+la MSE de 0,095003 à 0,064693 ; à seuils adaptés, ses décisions scalaires sont celles de ZF.
+Les seuils non adaptés conservent un biais QAM. Les IC tiennent compte des différences
+entre porteuses et positions binaires ; aucun IC binomial n’est annoncé avec CP court.
+Le canal est parfaitement connu ; son estimation reste à la phase 5.
 ## 13. Application à la transmission d’image
 Non réalisée.
 ## 14. Limites du modèle
-AWGN idéal disponible ; pas encore de canal multitrajet, de mise en forme, de codage
+AWGN idéal disponible ; canal multitrajet statique disponible, sans Doppler, de mise en forme, de codage
 ni de défaut de synchronisation. Les événements très rares sont peu résolus par l’effectif fixe ; les IC le signalent.
 ## 15. Perspectives : MIMO-OFDM, 5G NR et radio logicielle
 Extensions ultérieures ; aucune conformité à une norme n’est revendiquée.
@@ -73,3 +80,9 @@ sont sans erreur. La moyenne mesurée d’énergie totale de l’expérience 8 v
 65 attendue : fluctuation d’un tirage fini sans renormalisation artificielle.
 Les résultats détaillés et hypothèses sont dans experiments/08_ofdm_transmitter.md et
 experiments/09_ofdm_awgn.md. Le modèle ne démontre pas encore le rôle du CP en multitrajet.
+
+### Complément phase 4
+Les expériences de convolution, de statistiques Rayleigh et d’égalisation sont documentées
+séparément dans experiments/10_cyclic_prefix.md, 11_multipath_channel.md et 12_channel_equalization.md.
+Les références de la réalisation Rayleigh sont conditionnelles ; aucune moyenne d’ensemble
+BER Rayleigh n’est revendiquée. La connaissance parfaite de H précède volontairement son estimation.

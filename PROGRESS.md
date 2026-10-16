@@ -3,7 +3,7 @@
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-La phase 2 est également validée ; la phase 3 est validée et les phases 4 à 7 restent à réaliser.
+La phase 2 est également validée ; la phase 3 est validée et la phase 4 est validée et les phases 5 à 7 restent à réaliser.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
@@ -14,7 +14,7 @@ README, licence MIT, pyproject.toml et inventaire de dépendances requirements-l
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **181 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **223 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -65,10 +65,10 @@ Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
 qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
 
 ## Prochaines étapes
-1. Phase 4 : convolution linéaire/circulaire et influence du CP.
-2. Canal fixe puis Rayleigh, réponses impulsionnelle et fréquentielle.
-3. Égalisation ZF/MMSE avec canal connu avant estimation imparfaite.
-Interface Streamlit différée à la phase 7 ; rapport final encore progressif.
+1. Phase 5 : décalage fréquentiel (CFO), estimation et correction.
+2. Pilotes, estimation de canal et interpolation, avec comparaison au canal connu.
+3. Comparaisons globales avant transmission d’image et interface Streamlit.
+Le rapport reste progressif ; les phases 5 à 7 ne sont pas encore validées.
 
 ## Organisation du dépôt public
 Dépôt : https://github.com/Gi554/ofdm-lab ; branche principale main.
@@ -153,3 +153,22 @@ Mémoire 6 : écart de diagonalisation 0,0893 sans CP, 0,0457 avec C=3, puis 6,3
 5 000 canaux Rayleigh : énergie moyenne 1,0044923, écart-type 0,6773086.
 Le BER non corrigé reste élevé : le CP ne remplace pas l’égalisation.
 La phase 4 reste en cours ; ZF et MMSE sont le lot suivant.
+
+## Phase 4 — Bilan final
+Phase validée scientifiquement : expériences 10, 11 et 12, 223 tests réussis.
+Convolution complète sur le flux, CP suffisant pour mémoire 6, réponse H non normalisée.
+Canaux fixe et Rayleigh statique ; aucune renormalisation des réalisations aléatoires.
+Essais d’égalisation : 64 bursts bruités, 10 816 000 bits distincts, 43 264 000 décisions
+pour quatre modes appariés. Les essais sans bruit sont séparés dans la synthèse.
+Les 128 comparaisons conditionnelles BER/SER passent l’enveloppe globale au moins 99 %.
+Les essais sans bruit à CP suffisant sont sans erreur après égalisation connue.
+ZF et MMSE à gain pris en compte ont les mêmes comptes d’erreurs ; la MSE MMSE est réduite.
+Exemple 16-QAM fixe, CP16, Eb/N0=12 dB : BER brut 0,269611 ; BER égalisé 0,033784 ;
+MSE ZF 0,095003, MMSE 0,064693. Les seuils MMSE bruts ont un BER 0,035726, dû au biais.
+Les IC sont stratifiés par porteuse/bit sur des trames indépendantes. Aucun IC ni modèle
+diagonal n’est appliqué avec CP insuffisant. Les résultats Rayleigh sont conditionnels
+à une réalisation fixe, pas des moyennes de BER sur un ensemble de canaux.
+Documentation A–J, figures, CSV/JSON et notebook 04 ; exécution notebook directe Python,
+mode Jupyter interactif non testé. Estimation imparfaite et CFO restent à la phase 5.
+
+Neuf exports CSV/JSON identiques après réexécution des expériences 10 à 12 (SHA-256).
