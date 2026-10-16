@@ -7,6 +7,7 @@ import numpy as np
 from .bits import validate_bits
 from .configuration import OFDMConfig, _cp_length
 from .modulation import modulate_bpsk, modulate_qam, modulate_qpsk
+from .theory import _order
 from .transforms import _finite_array, ifft
 
 
@@ -32,14 +33,19 @@ def transmit(bits, config: OFDMConfig) -> OFDMTransmission:
     values = validate_bits(bits)
     if values.size == 0 or values.size % config.bits_per_ofdm_symbol:
         raise ValueError("Les bits doivent remplir un nombre entier non nul de symboles OFDM.")
-    if config.order == 2:
-        mapped = modulate_bpsk(values)
-    elif config.order == 4:
-        mapped = modulate_qpsk(values)
-    else:
-        mapped = modulate_qam(values, config.order)
+    mapped = map_bits(values, config.order)
     grid = np.zeros((values.size // config.bits_per_ofdm_symbol, config.n_fft), dtype=complex)
     grid[:, config.active_indices] = mapped.reshape(-1, config.n_active)
     useful = ifft(grid)
     with_cp = add_cyclic_prefix(useful, config.cp_length)
     return OFDMTransmission(grid, useful, with_cp, with_cp.reshape(-1))
+
+
+def map_bits(bits, order: int):
+    """Sélectionner le mapping existant, sans changer sa normalisation Es=1."""
+    order = _order(order)
+    if order == 2:
+        return modulate_bpsk(bits)
+    if order == 4:
+        return modulate_qpsk(bits)
+    return modulate_qam(bits, order)
