@@ -3,18 +3,18 @@
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-La phase 2 est en cours ; les phases 3 à 7 ne sont pas encore réalisées.
+La phase 2 est également validée ; les phases 3 à 7 ne sont pas encore réalisées.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
 QPSK Gray, 16-QAM et 64-QAM Gray, visualisation scientifique. Deux configurations JSON ;
-quatre expériences.
+six expériences.
 Documentation française A–J, théorie, méthode, glossaire, notebook, rapport progressif,
 README, licence MIT, pyproject.toml et inventaire de dépendances requirements-lock.txt.
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **51 tests réussis**, 0 échec (0,63 s lors de la dernière exécution locale).
+- `python -m pytest -q` dans le venv : **128 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -65,10 +65,9 @@ Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
 qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
 
 ## Prochaines étapes
-1. Phase 2 : ajouter AWGN et les conventions précises Eb/N0–Es/N0–SNR.
-2. Ajouter BER/SER, intervalles binomiaux et référence théorique BPSK/QPSK.
-3. Comparer les quatre modulations avec des effectifs statistiquement adaptés.
-4. Poursuivre FFT/IFFT, OFDM et préfixe cyclique dans l’ordre imposé.
+1. Phase 3 : transformations FFT/IFFT et validation de leur inversion.
+2. Allocation des sous-porteuses, indices/DC/nulles, émetteur OFDM et préfixe cyclique.
+3. Récepteur idéal puis validation OFDM sur AWGN avec bilan énergétique documenté.
 Interface Streamlit différée à la phase 7 ; rapport final encore progressif.
 
 ## Organisation du dépôt public
@@ -98,3 +97,26 @@ Conversions Eb/N0 → Es/N0 et Es/N0 → SNR avec hypothèses explicites.
 Expérience 5 exécutée : 48 000 bits par modulation, 12 cas, Eb/N0=0,6,12 dB.
 Écart relatif maximal de puissance : 1,225 %. Pas de renormalisation a posteriori.
 Quatre figures, CSV et JSON générés. L’expérience BER/SER reste à réaliser avant validation de phase 2.
+
+## Phase 2 — Bilan final BER/SER
+**Phase validée scientifiquement** : expériences 5 et 6 exécutées, 128 tests réussis,
+Ruff et formatage conformes. Le lot AWGN est intégré dans main par les PR #4 et #5.
+Les métriques et le simulateur AWGN réutilisable ne dupliquent pas les modulateurs.
+Le BER QAM exact intègre les transitions gaussiennes, avec contrôle indépendant de la
+16-QAM par une formule fermée. L’approximation de plus proches voisins est nommée séparément.
+
+Expérience 6 : 36 points, 1 200 000 bits par point, total 43 200 000 bits ;
+Eb/N0 de 0 à 16 dB par pas de 2 ; racine de graine 20261016, NumPy 2.5.4.
+- 36/36 références BER dans les IC ponctuels 95 %, 33/36 références SER.
+- Toutes les références BER et SER dans l’enveloppe de validation simultanée au moins 99 %.
+- Sept points sans erreur binaire : bornes positives, jamais assimilées à Pb=0.
+- Les points à moins de 100 erreurs sont signalés ; aucun arrêt adaptatif sur erreurs.
+- À 0 dB, approximation QAM inférieure au BER exact de 1,29 % (16-QAM) et 13,46 % (64-QAM).
+- Six exports de phase 2 identiques après réexécution avec la même configuration.
+
+CSV : awgn.csv, ber_comparison.csv et awgn_theory.csv. JSON : awgn.json,
+ber_comparison.json, ber_summary.json et phase2_reproducibility.json.
+Figures : quatre nuages AWGN, courbes BER et SER, écart théorique de l’approximation QAM.
+Notebook 02 exécuté cellule par cellule avec Python ; noyau Jupyter interactif non testé.
+La dépendance entre erreurs de bits d’un symbole QAM est prise en compte par les IC
+simultanés par position. Les modèles restent sans codage, CP, pilotes ou défaut de synchronisation.
