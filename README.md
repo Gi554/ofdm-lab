@@ -59,3 +59,10 @@ Pas de bruit, de fréquence d’échantillonnage ni de débit physique imposés 
 - `results/` : sorties réellement calculées ; `app/` réservé à la phase 7.
 
 Licence MIT. Aucun algorithme de chaîne OFDM fourni par une bibliothèque externe.
+
+## Processus de développement
+
+`codex/<fonctionnalite>` → PR → **staging** → PR → **main**.
+Les deux PR sont fusionnées après réussite des contrôles, avec des merge commits qui
+conservent les commits par fonctionnalité. `main` reste la branche par défaut.
+Voir [CONTRIBUTING.md](CONTRIBUTING.md) et [AGENTS.md](AGENTS.md).

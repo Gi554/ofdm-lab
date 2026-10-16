@@ -82,3 +82,10 @@ Identité de commit : compte GitHub du propriétaire, avec adresse noreply.
 Validation GitHub du socle : réussie sur Python 3.11, 3.12 et 3.13.
 La branche codex/qam-modulations contient un commit 16-QAM, un commit 64-QAM puis
 les expériences, résultats et explications. Les journaux locaux ne sont pas publiés.
+
+## Processus Git permanent
+Le propriétaire a demandé `staging` pour l’intégration et `main` pour les versions validées.
+Chaque fonctionnalité suit commits → PR vers staging → contrôles → merge, puis
+PR staging → main → contrôles → merge. Les fusions conservent les commits.
+Cette instruction est enregistrée dans AGENTS.md et CONTRIBUTING.md.
+La PR QAM #1 a été redirigée vers staging puis fusionnée après contrôles réussis.

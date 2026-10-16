@@ -2,6 +2,7 @@
 .gitattributes
 .github/workflows/ci.yml
 .gitignore
+AGENTS.md
 CONTRIBUTING.md
 LICENSE
 PROGRESS.md
