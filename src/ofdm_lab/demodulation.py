@@ -14,3 +14,9 @@ def _symbols(symbols: ArrayLike) -> NDArray[np.complex128]:
 def demodulate_bpsk(symbols: ArrayLike) -> NDArray[np.uint8]:
     """Décision sur Re(z) ; une valeur exactement nulle décide 0."""
     return (_symbols(symbols).real < 0).astype(np.uint8)
+
+
+def demodulate_qpsk(symbols: ArrayLike) -> NDArray[np.uint8]:
+    """Décisions indépendantes I puis Q ; seuil nul décidé 0."""
+    values = _symbols(symbols)
+    return np.column_stack((values.real < 0, values.imag < 0)).astype(np.uint8).ravel()
