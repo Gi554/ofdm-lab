@@ -63,6 +63,7 @@ jobs:
           python experiments/11_multipath_channel.py
           python experiments/12_channel_equalization.py
           python experiments/13_frequency_offset.py
+          python experiments/14_channel_estimation.py
       - name: Archiver les mesures
         uses: actions/upload-artifact@v4
         with:
