@@ -3,7 +3,7 @@
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-Les phases 1 à 5 sont validées. Les phases 6 et 7 restent à réaliser.
+Les phases 1 à 6 sont validées. La phase 7 (interface Streamlit) reste à réaliser.
 
 ## Livrables
 Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
@@ -14,7 +14,7 @@ README, licence MIT, pyproject.toml et inventaire de dépendances requirements-l
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **293 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **324 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -65,9 +65,9 @@ Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
 qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
 
 ## Prochaines étapes
-1. Phase 6 : transmission et reconstruction d’image, tramage, erreurs et bourrage explicites.
-2. Phase 7 : interface Streamlit réutilisant le moteur validé et exports utilisateur.
-Le rapport reste progressif ; les phases 1 à 5 sont validées.
+1. Phase 7 : interface Streamlit exploitant le moteur validé, paramètres, courbes et exports.
+2. Validation de l’interface et documentation de lancement local.
+Le rapport reste progressif ; les phases 1 à 6 sont validées.
 
 ## Organisation du dépôt public
 Dépôt : https://github.com/Gi554/ofdm-lab ; branche principale main.
@@ -209,3 +209,19 @@ exécuté directement avec Python, noyau Jupyter interactif non testé.
 CFO et correction CP, pilotes et interpolation, comparaison globale sont validés dans
 leurs hypothèses respectives. La comparaison globale garde CFO nul et timing parfait.
 La phase 5 est terminée. Prochaine étape : phase 6, transmission d’image.
+
+## Phase 6 — Transmission d’image (expérience 16)
+324 tests réussis. RGB8 brut dans des paquets à en-tête répété de 36 octets,
+CRC en-tête/bloc/image, réassemblage, doublons/contradictions rejetés et pertes explicites.
+PNG local, gris/RGBA convertis en RGB8 ; 4 MiB maximum de pixels. Mire projet 48×32.
+Douze cas sans bruit (quatre modulations × trois canaux) reconstruits sans erreur.
+18 bursts bruités, 54 mesures ; 663 552 bits pixels programmés, source répétée,
+2 363 904 décisions de transport sur les modes none/perfect/pilot appariés.
+16-QAM AWGN18dB : zéro erreur observée et 24/24 blocs acceptés. FIR modéré18dB :
+deux bits pixels erronés mais deux blocs rejetés (384 octets effacés), H parfait.
+FIR à creux18dB : 665 erreurs pixels et aucun en-tête fiable ; pas de reconstruction oracle.
+Aucun octet accepté corrompu observé dans les essais. Pas de FEC/ARQ ni garantie absolue CRC.
+Les BER sont descriptifs : image non iid et Eb/N0 nominal d’alphabet ; énergie réelle publiée.
+Deux exports CSV/JSON et pixels des PNG reproductibles ; figure vérifiée et notebook 08
+exécuté directement avec Python, noyau Jupyter interactif non testé.
+La phase 6 est terminée ; la phase 7 doit construire le laboratoire web Streamlit.

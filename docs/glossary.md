@@ -43,3 +43,7 @@
 - **Pilote** : symbole émis public permettant d’estimer le canal, sans bit utile.
 - **LS** : moindres carrés ; ici H estimé aux pilotes par Yp/Xp.
 - **Biais d’interpolation** : différence persistante entre le canal réel et son approximation interpolée, même sans bruit.
+
+- **CRC32** : contrôle de détection d’erreurs ; ne corrige pas et n’authentifie pas les données.
+- **Effacement** : bloc dont les données fiables manquent, signalé par masque et magenta dans les vues image.
+- **RGB8** : trois composantes rouge/vert/bleu de huit bits par pixel.

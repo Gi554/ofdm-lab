@@ -1,6 +1,6 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phases 1 à 5 validées ; phases 6 et 7 à réaliser.**
+**Rapport progressif — phases 1 à 6 validées ; phase 7 à réaliser.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
@@ -114,3 +114,12 @@ Les compromis BER, MSE et débit sont visibles dans [l’expérience 15](experim
 La phase 5 est validée dans les hypothèses documentées : correction CFO à début connu
 étudiée séparément, LS interpolé par trame, comparaison globale à timing parfait/CFO nul.
 Les phases de transmission d’image et de laboratoire Streamlit restent à réaliser.
+
+## Expérience 16 — Image locale et intégrité du transport
+Une image PNG est convertie en RGB8 brut, paquétisée puis transmise sur le moteur OFDM.
+Le décodeur ne reçoit pas les dimensions originales : il utilise seulement les en-têtes
+reçus valides. Les vues diagnostique/acceptée distinguent corruption et effacement.
+Douze essais sans bruit sont exacts ; 54 mesures bruitées documentent pertes de blocs,
+en-têtes, BER pixels/transport et énergie réelle. Voir [l’expérience 16](experiments/16_image_transmission.md).
+Les CRC détectent sans corriger, et le RGB brut ne représente pas les effets d’un codec
+ou d’une liaison RF complète. La phase 6 est validée ; l’interface Streamlit reste à réaliser.
