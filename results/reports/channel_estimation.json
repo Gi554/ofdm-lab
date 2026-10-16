@@ -1,0 +1,17 @@
+{
+  "seed": 20261016,
+  "numpy_version": "2.5.4",
+  "n_trials": 72,
+  "n_measurements": 216,
+  "unique_transmitted_bits": 3672000,
+  "energy_reference": "total",
+  "all_mse_validation_passed": true,
+  "mse_validation": "Chebyshev + union; simultaneous coverage >=99%; conservative",
+  "channel_assumptions": "static realization, CP sufficient, perfect timing, zero CFO",
+  "estimation": "per-frame LS + linear interpolation independently in each active half-band",
+  "n_pilots_by_spacing": {
+    "2": 28,
+    "4": 16,
+    "8": 10
+  }
+}

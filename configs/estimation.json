@@ -1,0 +1,20 @@
+{
+  "seed": 20261016,
+  "orders": [
+    4,
+    16
+  ],
+  "pilot_spacings": [
+    2,
+    4,
+    8
+  ],
+  "ebn0_db": [
+    0,
+    6,
+    12,
+    18
+  ],
+  "n_ofdm_symbols": 500,
+  "energy_reference": "total"
+}
