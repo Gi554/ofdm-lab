@@ -11,6 +11,7 @@ python experiments/02_bpsk.py
 python experiments/03_qpsk.py
 python experiments/04_qam.py
 python experiments/05_awgn.py
+python experiments/06_ber_comparison.py
 ```
 
 Utiliser le Python du venv : `.venv/Scripts/python.exe` sous Windows ou

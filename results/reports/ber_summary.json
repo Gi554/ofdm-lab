@@ -1,0 +1,11 @@
+{
+  "n_points": 36,
+  "total_bits": 43200000,
+  "points_zero_bit_errors": 7,
+  "ber_theory_in_95_ci": 36,
+  "ser_theory_in_95_ci": 33,
+  "all_ber_validation_passed": true,
+  "all_ser_validation_passed": true,
+  "familywise_confidence_at_least": 0.99,
+  "numpy_version": "2.5.4"
+}

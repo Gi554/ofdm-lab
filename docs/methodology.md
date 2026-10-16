@@ -12,7 +12,7 @@ mais aucune durée physique n’est choisie dans ces trois expériences.
 
 Le BER observé est le nombre d’erreurs divisé par le nombre de bits comparés.
 Sur canal idéal déterministe, une restitution exacte valide l’inversion du mapping.
-Elle n’établit aucune performance sous bruit. En Monte-Carlo futur, enregistrer le nombre
+Elle n’établit aucune performance sous bruit. En Monte-Carlo, enregistrer le nombre
 d’erreurs et fournir des intervalles binomiaux. Zéro erreur sur N essais indépendants
 ne démontre pas une probabilité nulle : borne supérieure unilatérale 95 %,
 1−0,05^(1/N), approximativement 3/N. Cette borne ne représente pas un modèle du canal idéal.
@@ -20,3 +20,12 @@ ne démontre pas une probabilité nulle : borne supérieure unilatérale 95 %,
 Les figures utilisent des index sans unité et des amplitudes normalisées ; aucune
 courbe illustrative n’est présentée comme une mesure RF. Les sorties JSON enregistrent
 la graine et la version NumPy. Les dépendances résolues sont archivées après installation.
+
+## Validation AWGN de phase 2
+
+Les effectifs sont fixes avant tirage ; aucune règle d’arrêt sur le nombre d’erreurs.
+En QAM, l’unité indépendante est le symbole. Les IC par position binaire, corrigés par
+Bonferroni, donnent un IC conservateur du BER moyen sans supposer les bits indépendants.
+Les IC SER sont binomiaux Clopper–Pearson. Le script 06 utilise une enveloppe de validation
+simultanée au moins 99 % sur ses 72 comparaisons, en complément des IC graphiques ponctuels 95 %.
+Les points avec peu d’erreurs sont signalés, pas surinterprétés.

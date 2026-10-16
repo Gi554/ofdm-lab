@@ -80,3 +80,83 @@ def plot_constellation_clouds(clouds, ideal, title: str, path: Path):
     fig.tight_layout()
     fig.savefig(path, dpi=160, bbox_inches="tight")
     plt.close(fig)
+
+
+def plot_error_curves(measurements, theoretical_curves, metric: str, path: Path):
+    """Taux mesurés avec IC ; zéro erreur représenté par une borne supérieure."""
+    fig, ax = plt.subplots(figsize=(10, 6))
+    confidence = measurements["confidence"].unique()
+    confidence_label = f"{100 * confidence[0]:g} %" if len(confidence) == 1 else "par point"
+    for index, (name, group) in enumerate(measurements.groupby("modulation", sort=False)):
+        color = f"C{index % 10}"
+        curve = theoretical_curves[theoretical_curves["modulation"] == name]
+        ax.semilogy(
+            curve["ebn0_db"],
+            curve[metric + "_theory_exact"],
+            color=color,
+            label=f"{name} — théorie exacte",
+        )
+        positive = group[group[metric] > 0]
+        ax.errorbar(
+            positive["ebn0_db"],
+            positive[metric],
+            yerr=[
+                positive[metric] - positive[metric + "_ci_lower"],
+                positive[metric + "_ci_upper"] - positive[metric],
+            ],
+            fmt="o",
+            color=color,
+            capsize=3,
+            label=f"{name} — simulé, IC {confidence_label}",
+        )
+        zero = group[group[metric] == 0]
+        ax.scatter(zero["ebn0_db"], zero[metric + "_ci_upper"], marker="v", color=color, s=50)
+    ax.scatter([], [], marker="v", color="gray", label="0 erreur : borne supérieure IC")
+    positive_values = measurements.loc[measurements[metric] > 0, metric]
+    zero_upper = measurements.loc[measurements[metric] == 0, metric + "_ci_upper"]
+    minimum = (
+        min(
+            positive_values.min() if len(positive_values) else 1e-3,
+            zero_upper.min() if len(zero_upper) else 1e-3,
+        )
+        / 3
+    )
+    ax.set(
+        xlabel="Eb/N0 (dB)",
+        ylabel=f"{metric.upper()} (sans unité)",
+        title=f"{metric.upper()} sur AWGN — effectifs fixes, phase connue",
+        ylim=(minimum, 1),
+    )
+    ax.grid(which="both", alpha=0.3)
+    ax.legend(fontsize=8, ncol=2)
+    ax.text(
+        0,
+        -0.19,
+        "IC BER : bornes simultanées par position binaire ; IC SER : Clopper–Pearson."
+        if metric == "ber"
+        else "Triangles : borne supérieure après zéro erreur, jamais une probabilité nulle.",
+        transform=ax.transAxes,
+        fontsize=9,
+    )
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_qam_approximation(curves, path: Path):
+    """Écart de l'approximation à la référence exacte ; calcul théorique, sans mesure."""
+    fig, ax = plt.subplots(figsize=(8, 5))
+    for name in ["16-QAM", "64-QAM"]:
+        group = curves[(curves["modulation"] == name) & (curves["ber_theory_exact"] > 0)]
+        relative = 100 * (group["ber_qam_approx"] / group["ber_theory_exact"] - 1)
+        ax.plot(group["ebn0_db"], relative, label=name)
+    ax.set(
+        xlabel="Eb/N0 (dB)",
+        ylabel="Écart relatif de l'approximation (%)",
+        title="QAM — calcul théorique : plus proches voisins contre BER exact",
+    )
+    ax.grid(alpha=0.3)
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
