@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Configuration locale des assistants et outils de développement
+.openai/
+openai/
+.codex/
+.agents/
+.local/
+.env
+.env.*
+!.env.example
+# Artefacts de construction
+build/
+dist/
