@@ -1,0 +1,15 @@
+{
+  "exports_checked": 9,
+  "all_identical": true,
+  "sha256": {
+    "results/datasets/cyclic_prefix.csv": "f4d8f82455a79f9bc496a02a424a1ccecc1a89e83261abd341b257fb88ec372d",
+    "results/reports/cyclic_prefix.json": "33a83af903baedd0c02bec1a3a8da6fe6cba64fe5df4bf3ae94e5429d1937f5a",
+    "results/datasets/channel_fixed.csv": "4b63b97993691afe760930a9859bb8d5be4ee486a1a38346fbdb7dd8f935c703",
+    "results/datasets/channel_rayleigh_static.csv": "99f635e2b3ad71e8861aa337a4c4f0c0568d5bf8211f0e89c2ff06432699a76a",
+    "results/datasets/rayleigh_energies.csv": "56fda706d5ccf4c56e983174f0e1b967b3059a65bfa773a40d87ebd32961215f",
+    "results/reports/multipath.json": "3c393c5b700b3632b5c19c806d56f054dbbb0df76206fe360104747b426e43dd",
+    "results/datasets/equalization.csv": "2a206ccd77188572919c64086c12416b011b8793539d3f02202ca65abed69849",
+    "results/reports/equalization.json": "1f63669b735a4bf56bdc54e9abd7981201dc432c21e4d2038caa1f0e812b4665",
+    "results/reports/equalization_summary.json": "7df9b1dacd0107413249b3457df5d081832594004c2fb1a9042018247da9011d"
+  }
+}

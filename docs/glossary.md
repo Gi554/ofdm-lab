@@ -29,3 +29,9 @@
 - **FFT/IFFT unitaires** : DFT directe/inverse normalisées par 1/sqrt(N), conservant l’énergie.
 - **Porteuse de garde** : case fréquentielle laissée nulle au bord du bloc.
 - **DSP** : densité spectrale de puissance ; estimation discrète en amplitude normalisée²/Hz.
+
+- **ISI** : interférence entre symboles successifs due à une mémoire de canal non couverte.
+- **ZF** : Zero-Forcing, inversion du gain connu H, avec amplification du bruit dans les creux.
+- **MMSE** : estimation linéaire minimisant l’erreur quadratique moyenne, généralement biaisée.
+- **PDP** : profil de puissances moyennes des trajets (Power Delay Profile).
+- **Rayleigh statique** : gains complexes gaussiens tirés une fois et fixes pendant le burst.

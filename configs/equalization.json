@@ -1,0 +1,21 @@
+{
+  "seed": 20261016,
+  "orders": [
+    2,
+    4,
+    16,
+    64
+  ],
+  "cp_lengths": [
+    0,
+    16
+  ],
+  "ebn0_db": [
+    0,
+    6,
+    12,
+    18
+  ],
+  "n_ofdm_symbols": 1000,
+  "energy_reference": "useful"
+}

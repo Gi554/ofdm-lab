@@ -29,3 +29,11 @@ Bonferroni, donnent un IC conservateur du BER moyen sans supposer les bits indé
 Les IC SER sont binomiaux Clopper–Pearson. Le script 06 utilise une enveloppe de validation
 simultanée au moins 99 % sur ses 72 comparaisons, en complément des IC graphiques ponctuels 95 %.
 Les points avec peu d’erreurs sont signalés, pas surinterprétés.
+
+## Incertitudes sur canal sélectif
+
+Les probabilités diffèrent entre porteuses à H fixé. Les IC de phase 4 sont donc calculés
+par strate porteuse/bit sur N trames iid, puis combinés par Bonferroni. Le SER est stratifié
+par porteuse. Les références sont conditionnelles à la réalisation fixe. Avec CP insuffisant,
+les comptes restent descriptifs : la dépendance introduite par l’ISI invalide les IC binomiaux
+et la référence diagonale. Les quatre modes d’égalisation utilisent le même burst bruité.
