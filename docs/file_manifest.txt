@@ -8,6 +8,7 @@ LICENSE
 PROGRESS.md
 README.md
 app/README.md
+assets/test_pattern.png
 configs/awgn.json
 configs/ber.json
 configs/comparison.json
@@ -15,6 +16,7 @@ configs/equalization.json
 configs/estimation.json
 configs/fft.json
 configs/fundamentals.json
+configs/image.json
 configs/multipath.json
 configs/ofdm.json
 configs/ofdm_awgn.json
@@ -38,6 +40,7 @@ docs/experiments/12_channel_equalization.md
 docs/experiments/13_frequency_offset.md
 docs/experiments/14_channel_estimation.md
 docs/experiments/15_global_comparison.md
+docs/experiments/16_image_transmission.md
 docs/file_manifest.txt
 docs/final_report.md
 docs/glossary.md
@@ -52,6 +55,7 @@ docs/theory/07_equalization.md
 docs/theory/08_synchronization.md
 docs/theory/09_channel_estimation.md
 docs/theory/10_global_comparison.md
+docs/theory/11_image_transport.md
 experiments/01_binary_generation.py
 experiments/02_bpsk.py
 experiments/03_qpsk.py
@@ -67,6 +71,7 @@ experiments/12_channel_equalization.py
 experiments/13_frequency_offset.py
 experiments/14_channel_estimation.py
 experiments/15_global_comparison.py
+experiments/16_image_transmission.py
 experiments/_common.py
 experiments/_multipath_common.py
 notebooks/01_fundamentals.ipynb
@@ -76,6 +81,7 @@ notebooks/04_multipath_equalization.ipynb
 notebooks/05_frequency_offset.ipynb
 notebooks/06_channel_estimation.ipynb
 notebooks/07_global_comparison.ipynb
+notebooks/08_image_transmission.ipynb
 pyproject.toml
 requirements-lock.txt
 results/datasets/16qam_alphabet.csv
@@ -101,6 +107,7 @@ results/datasets/frequency_offset.csv
 results/datasets/global_comparison.csv
 results/datasets/global_scorecard.csv
 results/datasets/global_validation.csv
+results/datasets/image_transmission.csv
 results/datasets/ofdm_awgn.csv
 results/datasets/ofdm_grid.csv
 results/datasets/ofdm_time.csv
@@ -128,6 +135,14 @@ results/figures/12_channel_equalization.png
 results/figures/13_frequency_offset.png
 results/figures/14_channel_estimation.png
 results/figures/15_global_comparison.png
+results/figures/16_image_transmission.png
+results/images/16_awgn_M16_12dB_perfect_accepted.png
+results/images/16_awgn_M16_12dB_perfect_diagnostic.png
+results/images/16_awgn_M16_18dB_perfect_accepted.png
+results/images/16_awgn_M16_18dB_perfect_diagnostic.png
+results/images/16_mild_M16_18dB_pilot_accepted.png
+results/images/16_mild_M16_18dB_pilot_diagnostic.png
+results/images/16_original.png
 results/reports/awgn.json
 results/reports/ber_comparison.json
 results/reports/ber_summary.json
@@ -143,6 +158,8 @@ results/reports/fft.json
 results/reports/frequency_offset.json
 results/reports/global_comparison.json
 results/reports/global_reproducibility.json
+results/reports/image_reproducibility.json
+results/reports/image_transmission.json
 results/reports/multipath.json
 results/reports/ofdm_awgn.json
 results/reports/ofdm_summary.json
@@ -164,6 +181,8 @@ src/ofdm_lab/configuration.py
 src/ofdm_lab/demodulation.py
 src/ofdm_lab/equalization.py
 src/ofdm_lab/estimation.py
+src/ofdm_lab/image_simulation.py
+src/ofdm_lab/image_transport.py
 src/ofdm_lab/metrics.py
 src/ofdm_lab/modulation.py
 src/ofdm_lab/multipath_simulation.py
@@ -183,6 +202,8 @@ tests/test_channels.py
 tests/test_comparison.py
 tests/test_equalization.py
 tests/test_estimation.py
+tests/test_image_simulation.py
+tests/test_image_transport.py
 tests/test_metrics.py
 tests/test_multipath_simulation.py
 tests/test_noise.py

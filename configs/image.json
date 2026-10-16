@@ -1,0 +1,39 @@
+{
+  "seed": 20261017,
+  "image": "assets/test_pattern.png",
+  "width": 48,
+  "height": 32,
+  "chunk_bytes": 192,
+  "orders": [
+    4,
+    16
+  ],
+  "ebn0_db": [
+    6,
+    12,
+    18
+  ],
+  "pilot_spacing": 4,
+  "n_fft": 64,
+  "n_active": 52,
+  "cp_length": 16,
+  "mild_taps": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      0.25
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      -0.15,
+      0
+    ]
+  ],
+  "mild_normalize_energy": true
+}

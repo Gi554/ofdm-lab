@@ -9,11 +9,12 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
 La phase 2 est validée : AWGN, conversions énergétiques, BER/SER, intervalles de confiance
-et références théoriques exactes. **293 tests** ; courbes sur **43,2 millions de bits**.
+et références théoriques exactes. **324 tests** ; courbes sur **43,2 millions de bits**.
 La phase 3 est validée : FFT/IFFT unitaires, émetteur/récepteur OFDM, CP, DC/gardes nulles,
 validation AWGN sur 21,632 millions de bits. La phase 4 est validée : canal multitrajet, CP et égalisation connue ZF/MMSE.
 La phase 5 est validée : CFO et correction CP, pilotes LS/interpolation, comparaison globale.
-Transmission d’image (phase 6) et interface Streamlit (phase 7) restent à développer.
+La phase 6 est validée : transmission RGB8, trames/CRC et reconstruction d’image.
+L’interface Streamlit (phase 7) reste à développer.
 Voir [PROGRESS.md](PROGRESS.md) pour les mesures et validations exécutées.
 
 ## Installation (PowerShell, Python 3.11 ou ultérieur)
@@ -141,3 +142,10 @@ La comparaison globale est disponible dans [l’expérience 15](docs/experiments
 deux niveaux Eb/N0 et trois canaux. Cinq modes appariés ; 4 832 256 bits distincts.
 Les 128 références BER valides passent une enveloppe simultanée au moins 99 %.
 Les résultats à CP insuffisant sont descriptifs. La phase 5 est terminée.
+
+### Transmission d’image
+L’expérience 16 transmet un PNG local après conversion en pixels RGB8, avec paquets
+et CRC. Elle distingue pixels reçus, blocs acceptés et effacements, sans reconstruire
+à partir de l’original. Mire de démonstration incluse ; option --image pour un autre PNG.
+Voir [l’expérience 16](docs/experiments/16_image_transmission.md) et
+[le format de transport](docs/theory/11_image_transport.md).
