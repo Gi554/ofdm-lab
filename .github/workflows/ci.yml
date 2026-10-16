@@ -65,6 +65,7 @@ jobs:
           python experiments/13_frequency_offset.py
           python experiments/14_channel_estimation.py
           python experiments/15_global_comparison.py
+          python experiments/16_image_transmission.py
       - name: Archiver les mesures
         uses: actions/upload-artifact@v4
         with:

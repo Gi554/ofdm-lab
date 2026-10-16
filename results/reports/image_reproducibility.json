@@ -1,0 +1,19 @@
+{
+  "exports_checked": 2,
+  "all_identical": true,
+  "pixel_arrays_checked": 8,
+  "sha256": {
+    "results/datasets/image_transmission.csv": "778133079fc37cc44a0a3a37cd8bf0cb51261b22a4b288b81778dabd0e71a0d6",
+    "results/reports/image_transmission.json": "aefd63b88d101ff90f7883b3344d14e304d17952260fe615b0521fcacbaf356f"
+  },
+  "rgb_sha256": {
+    "assets/test_pattern.png": "06810bd121ec24f7aeca542d59fd1c2af117e11b820631af912dde272b801288",
+    "results/images/16_awgn_M16_12dB_perfect_accepted.png": "4a62ee828957c4e8595420cd6b35d95f9d1ef786cbc9321b090064c381a28b60",
+    "results/images/16_awgn_M16_12dB_perfect_diagnostic.png": "d00401d2e3bfd0ce7285e60c27c7029b5456bcb4074a0fcf464c1870fa55ea3c",
+    "results/images/16_awgn_M16_18dB_perfect_accepted.png": "06810bd121ec24f7aeca542d59fd1c2af117e11b820631af912dde272b801288",
+    "results/images/16_awgn_M16_18dB_perfect_diagnostic.png": "06810bd121ec24f7aeca542d59fd1c2af117e11b820631af912dde272b801288",
+    "results/images/16_mild_M16_18dB_pilot_accepted.png": "0b67b5ec8346d477fd45647c0663580e038e25ee7864cfe14cd5bc460f846d04",
+    "results/images/16_mild_M16_18dB_pilot_diagnostic.png": "68f58c0a82db0afbb9bfc72859f418a4f2bbb1b83c214ddb99c31ff824b648fe",
+    "results/images/16_original.png": "06810bd121ec24f7aeca542d59fd1c2af117e11b820631af912dde272b801288"
+  }
+}

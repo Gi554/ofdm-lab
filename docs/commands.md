@@ -40,3 +40,11 @@ python experiments/14_channel_estimation.py
 ```powershell
 python experiments/15_global_comparison.py
 ```
+
+## Transmission d’image
+```powershell
+python experiments/16_image_transmission.py
+python experiments/16_image_transmission.py --image mon_image.png
+```
+Le second appel remplace les résultats de l’expérience par ceux de ce PNG local.
+Le chemin complet n’est pas enregistré dans les rapports ; vérifier le contenu avant publication.
