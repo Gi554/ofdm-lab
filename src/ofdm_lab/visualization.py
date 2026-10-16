@@ -191,3 +191,88 @@ def plot_transform_experiment(waveform, spectrum, gram, sample_rate_hz: float, p
     fig.tight_layout()
     fig.savefig(path, dpi=160, bbox_inches="tight")
     plt.close(fig)
+
+
+def plot_ofdm_transmission(tx, config, path: Path):
+    """Grille, deux symboles avec zones CP et DSP de Welch, sans prétention RF."""
+    from scipy.signal import welch
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+    width = config.n_fft + config.cp_length
+    shown = tx.waveform[: 2 * width]
+    t = np.arange(shown.size) / config.sample_rate_hz * 1e6
+    axes[0].plot(t, shown.real, label="I")
+    axes[0].plot(t, shown.imag, label="Q")
+    for start in range(0, len(shown), width):
+        if config.cp_length:
+            axes[0].axvspan(
+                start / config.sample_rate_hz * 1e6,
+                (start + config.cp_length) / config.sample_rate_hz * 1e6,
+                alpha=0.15,
+                color="gray",
+                label="CP" if start == 0 else None,
+            )
+    axes[0].set(
+        xlabel="Temps (µs)", ylabel="Amplitude normalisée", title="Signal sérialisé avec CP"
+    )
+    axes[0].legend(fontsize=8)
+    f = np.fft.fftshift(np.fft.fftfreq(config.n_fft, d=1 / config.sample_rate_hz)) / 1e3
+    axes[1].stem(f, np.fft.fftshift(abs(tx.grid[0])), label="Premier symbole")
+    axes[1].set(
+        xlabel="Fréquence (kHz)", ylabel="Amplitude normalisée", title="Allocation native recentrée"
+    )
+    axes[1].legend(fontsize=8)
+    freq, psd = welch(
+        tx.waveform,
+        fs=config.sample_rate_hz,
+        nperseg=min(512, len(tx.waveform)),
+        return_onesided=False,
+        detrend=False,
+    )
+    axes[2].plot(
+        np.fft.fftshift(freq) / 1e3,
+        10 * np.log10(np.maximum(np.fft.fftshift(psd), 1e-30)),
+        label="Welch",
+    )
+    axes[2].set(
+        xlabel="Fréquence (kHz)", ylabel="DSP (dB, amplitude²/Hz)", title="DSP discrète estimée"
+    )
+    axes[2].legend(fontsize=8)
+    for ax in axes:
+        ax.grid(alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_ofdm_ber(frame, path: Path):
+    """Comparer les références énergétiques ; triangles = borne haute après zéro erreur."""
+    fig, axes = plt.subplots(2, 2, figsize=(11, 8))
+    for ax, order in zip(axes.ravel(), [2, 4, 16, 64], strict=True):
+        subset = frame[frame.order == order]
+        for (cp, ref), group in subset.groupby(["cp_length", "energy_reference"]):
+            label = f"CP={cp}, Eb {ref}"
+            (line,) = ax.semilogy(group.ebn0_db, group.ber_theory_exact, label=label + " théorique")
+            good = group[group.ber > 0]
+            zero = group[group.ber == 0]
+            ax.errorbar(
+                good.ebn0_db,
+                good.ber,
+                yerr=[good.ber - good.ber_ci_lower, good.ber_ci_upper - good.ber],
+                fmt="o",
+                color=line.get_color(),
+                capsize=2,
+            )
+            ax.scatter(zero.ebn0_db, zero.ber_ci_upper, marker="v", color=line.get_color())
+        ax.set(
+            xlabel="Eb/N0 déclaré (dB)",
+            ylabel="BER (sans unité)",
+            title={2: "BPSK", 4: "QPSK", 16: "16-QAM", 64: "64-QAM"}[order],
+            ylim=(1e-6, 1),
+        )
+        ax.grid(which="both", alpha=0.3)
+        ax.legend(fontsize=7)
+    fig.suptitle("OFDM/AWGN : points mesurés et IC 95 % ; triangles = bornes après zéro erreur")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160, bbox_inches="tight")
+    plt.close(fig)

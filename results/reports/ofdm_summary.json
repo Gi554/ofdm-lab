@@ -1,0 +1,63 @@
+{
+  "n_points": 64,
+  "total_bits": 21632000,
+  "ideal_cases": [
+    {
+      "order": 2,
+      "cp_length": 0,
+      "n_bits": 5200,
+      "bit_errors": 0
+    },
+    {
+      "order": 2,
+      "cp_length": 16,
+      "n_bits": 5200,
+      "bit_errors": 0
+    },
+    {
+      "order": 4,
+      "cp_length": 0,
+      "n_bits": 10400,
+      "bit_errors": 0
+    },
+    {
+      "order": 4,
+      "cp_length": 16,
+      "n_bits": 10400,
+      "bit_errors": 0
+    },
+    {
+      "order": 16,
+      "cp_length": 0,
+      "n_bits": 20800,
+      "bit_errors": 0
+    },
+    {
+      "order": 16,
+      "cp_length": 16,
+      "n_bits": 20800,
+      "bit_errors": 0
+    },
+    {
+      "order": 64,
+      "cp_length": 0,
+      "n_bits": 31200,
+      "bit_errors": 0
+    },
+    {
+      "order": 64,
+      "cp_length": 16,
+      "n_bits": 31200,
+      "bit_errors": 0
+    }
+  ],
+  "all_ideal_passed": true,
+  "all_ber_validation_passed": true,
+  "all_ser_validation_passed": true,
+  "familywise_confidence_at_least": 0.99,
+  "cp_penalties_db": {
+    "0": 0.0,
+    "16": 0.9691001300805642
+  },
+  "numpy_version": "2.5.4"
+}

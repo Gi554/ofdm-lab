@@ -24,3 +24,8 @@
 - **Clopper–Pearson** : intervalle binomial exact, généralement conservateur.
 - **Bonferroni** : répartition du risque global entre plusieurs bornes pour garantir leur couverture simultanée.
 - **Hamming** : nombre de positions binaires différentes entre deux mots.
+
+- **DC** : case fréquentielle de fréquence nulle, laissée vide ici.
+- **FFT/IFFT unitaires** : DFT directe/inverse normalisées par 1/sqrt(N), conservant l’énergie.
+- **Porteuse de garde** : case fréquentielle laissée nulle au bord du bloc.
+- **DSP** : densité spectrale de puissance ; estimation discrète en amplitude normalisée²/Hz.

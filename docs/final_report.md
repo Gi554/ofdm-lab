@@ -1,6 +1,6 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phases 1 et 2 validées ; phases 3 à 7 à réaliser.**
+**Rapport progressif — phases 1 à 3 validées ; phases 4 à 7 à réaliser.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
@@ -13,20 +13,21 @@ L’information binaire est regroupée en symboles complexes. Aucun matériel RF
 ## 4. Principes des modulations numériques
 Voir theory/01_modulations.md et theory/02_qam.md pour les mappings, décisions et normalisations.
 ## 5. Fondements mathématiques de l’OFDM
-À rédiger après expérience 7.
+DFT unitaire et orthogonalité vérifiées : voir theory/05_fft_ofdm.md.
+N=64, Δf=15 kHz, Fs=960 kHz ; erreur d’inversion mesurée 5,66e-16.
 ## 6. Modélisation des canaux radio
 AWGN complexe disponible : E|n|²=N0 et N0/2 par axe. Expérience 5 : 12 cas,
 écart relatif maximal de puissance 1,225 %. Voir theory/03_awgn.md et experiments/05_awgn.md.
 La convolution multitrajet reste à réaliser.
 ## 7. Architecture de l’émetteur
-Les mappings BPSK/QPSK/16-QAM/64-QAM sont disponibles. Allocation, IFFT et CP restent à développer.
+Les mappings BPSK/QPSK/16-QAM/64-QAM sont disponibles. Allocation symétrique sans DC/Nyquist, IFFT unitaire et copie cyclique implémentées.
 ## 8. Architecture du récepteur
-Les décisions cohérentes idéales sont disponibles ; le récepteur OFDM reste à développer.
+Les décisions cohérentes idéales sont disponibles ; le récepteur OFDM à début connu retire le CP, applique la FFT et extrait les données.
 ## 9. Méthodologie expérimentale
 Voir methodology.md : graine fixe, sorties traçables et validation déterministe.
 ## 10. Résultats des simulations
 Sur 10 000 bits (graine 20261016), 0 erreur BPSK et 0 erreur QPSK en canal idéal ;
-énergie moyenne Es=1 dans les deux cas. Les 128 tests passent. Six exports CSV/JSON
+énergie moyenne Es=1 dans les deux cas. Les 181 tests passent. Six exports CSV/JSON
 sont identiques après réexécution. Consulter results/reports pour les mesures détaillées.
 Sur 120 000 bits QAM, aucune erreur binaire ou symbole en canal idéal. Distances minimales
 mesurées : 0,632456 (16-QAM) et 0,308607 (64-QAM). L’énergie moyenne de chaque alphabet
@@ -64,3 +65,11 @@ Les équations du premier lot sont explicitées intégralement dans la documenta
 documentation officielle vérifiée le 16 octobre 2026.
 ## 18. Annexes techniques
 Code : src/ofdm_lab ; configuration : configs/fundamentals.json ; tests : tests/.
+
+### Complément phase 3
+21 632 000 bits OFDM sur AWGN, 64 points, quatre modulations, CP 0/16 et deux références Eb.
+Toutes les références BER/SER passent la validation simultanée 99 %. Les huit essais idéaux
+sont sans erreur. La moyenne mesurée d’énergie totale de l’expérience 8 vaut 65,67047 contre
+65 attendue : fluctuation d’un tirage fini sans renormalisation artificielle.
+Les résultats détaillés et hypothèses sont dans experiments/08_ofdm_transmitter.md et
+experiments/09_ofdm_awgn.md. Le modèle ne démontre pas encore le rôle du CP en multitrajet.
