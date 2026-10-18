@@ -3,6 +3,7 @@
 import struct
 import zlib
 from dataclasses import dataclass
+from io import BytesIO
 from pathlib import Path
 
 import matplotlib.image as mpimg
@@ -35,9 +36,12 @@ def validate_image(image):
 
 def load_image(path):
     """Charger un PNG local RGB, gris ou RGBA ; alpha composé sur fond blanc."""
-    if Path(path).suffix.lower() != ".png":
-        raise ValueError("Le chargeur du laboratoire accepte un fichier PNG local.")
-    values = np.asarray(mpimg.imread(path))
+    if isinstance(path, bytes):
+        values = np.asarray(mpimg.imread(BytesIO(path), format="png"))
+    else:
+        if Path(path).suffix.lower() != ".png":
+            raise ValueError("Le chargeur du laboratoire accepte un fichier PNG local.")
+        values = np.asarray(mpimg.imread(path))
     if values.dtype.kind == "f":
         if not np.all(np.isfinite(values)) or np.any((values < 0) | (values > 1)):
             raise ValueError("Les composantes PNG doivent être finies entre 0 et 1.")

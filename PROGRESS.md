@@ -1,20 +1,21 @@
-# Suivi OFDM Lab — 17 octobre 2026
+# Suivi OFDM Lab — 18 octobre 2026
 
 ## Bilan de phase 1
 Les expériences 1 à 4 sont implémentées, testées et exécutées : génération binaire,
 BPSK, QPSK Gray, 16-QAM Gray et 64-QAM Gray. **La phase 1 est validée.**
-Les phases 1 à 6 sont validées. La phase 7 (interface Streamlit) reste à réaliser.
+Les phases 1 à 7 sont implémentées et validées dans les hypothèses documentées.
+L’application se lance localement dans le navigateur ; aucun hébergement public configuré.
 
 ## Livrables
-Bibliothèque : génération binaire, validation des bits, modulation/démodulation BPSK et
-QPSK Gray, 16-QAM et 64-QAM Gray, visualisation scientifique. Deux configurations JSON ;
-six expériences.
-Documentation française A–J, théorie, méthode, glossaire, notebook, rapport progressif,
-README, licence MIT, pyproject.toml et inventaire de dépendances requirements-lock.txt.
+Bibliothèque de génération/modulation, FFT/CP et chaîne OFDM, canaux/bruit, métriques,
+égalisation, CFO, pilotes/estimation, transport d’image et services du laboratoire.
+Dix-sept expériences, application Streamlit à quatre espaces, exports CSV/JSON/PNG,
+notebooks, documentation française A–J, théorie et rapport de validation.
+README, licence MIT, pyproject.toml et inventaire requirements-lock.txt.
 La liste exacte des fichiers livrés est dans docs/file_manifest.txt.
 
 ## Tests et qualité
-- `python -m pytest -q` dans le venv : **324 tests réussis**, 0 échec.
+- `python -m pytest -q` dans le venv : **342 tests réussis**, 0 échec.
 - `python -m ruff check .` : **All checks passed!**
 - Mapping/démapping de 100 000 bits par modulation, énergie Es=1, Gray et voisinage,
   dimensions, seuils de décision, entrées invalides et isolation du générateur global.
@@ -64,10 +65,12 @@ quantifie pas le BER sous bruit. Les défauts de synchronisation et le canal res
 Sorties : 04_16qam.png, 04_64qam.png, alphabets CSV, qam_comparison.csv,
 qam.json et qam_reproducibility.json. Documentation : docs/experiments/04_qam.md.
 
-## Prochaines étapes
-1. Phase 7 : interface Streamlit exploitant le moteur validé, paramètres, courbes et exports.
-2. Validation de l’interface et documentation de lancement local.
-Le rapport reste progressif ; les phases 1 à 6 sont validées.
+## Livraison et utilisation
+Lancer l’application Streamlit selon app/README.md. Les 17 expériences et les modules
+scientifiques restent utilisables sans interface. Les limites RF, statistiques et
+énergétiques sont documentées ; aucune mise en ligne n’est incluse dans cette livraison.
+Les améliorations futures (hébergement, codage, synchronisation aveugle) sont hors du
+périmètre actuel, sans modifier les mesures déjà produites.
 
 ## Organisation du dépôt public
 Dépôt : https://github.com/Gi554/ofdm-lab ; branche principale main.
@@ -225,3 +228,17 @@ Les BER sont descriptifs : image non iid et Eb/N0 nominal d’alphabet ; énergi
 Deux exports CSV/JSON et pixels des PNG reproductibles ; figure vérifiée et notebook 08
 exécuté directement avec Python, noyau Jupyter interactif non testé.
 La phase 6 est terminée ; la phase 7 doit construire le laboratoire web Streamlit.
+
+## Phase 7 — Laboratoire interactif (expérience 17)
+342 tests réussis avec Streamlit installé, dont quatre parcours AppTest. Interface
+française Simulation/Comparaisons/Image/Repères ; réglages validés et calcul explicite.
+Trace bornée optionnelle du moteur, sans changer les résultats historiques ; constellations,
+DSP Welch, canal, BER, MSE et débit. CSV/JSON/PNG en mémoire, historique session limité à 8.
+Deux exports de services identiques après réexécution. Expérience17 : six vérifications réussies.
+Snapshots et migration des anciens balayages : aucun réétiquetage de mesures périmées.
+PNG chargé en mémoire, maximum128×128/2Mio, calculimage4096trames ; aucun fichier utilisateur
+écrit au dépôt. Pas d’hébergement public ni de test de charge multiutilisateur.
+Contrôle navigateur des mesures, comparaison BER et téléchargements CSV/JSON.
+Le chargement PNG et la restitution image sont aussi vérifiés par services et AppTest.
+Streamlit1.66.0, thème clair ; prévisualisation bureau et panneau étroit vérifiés.
+Application locale disponible via app/streamlit_app.py ; guide dans app/README.md.

@@ -1,0 +1,393 @@
+{
+  "checks": {
+    "default_parameters_preserved": true,
+    "five_paired_methods": true,
+    "bounded_trace": true,
+    "sweep_points": true,
+    "short_cp_has_no_binomial_interval": true,
+    "image_complete_crc_valid": true
+  },
+  "all_checks_passed": true,
+  "default_settings": {
+    "n_fft": 64,
+    "n_active": 52,
+    "cp_length": 16,
+    "order": 16,
+    "ebn0_db": 12.0,
+    "frames": 128,
+    "seed": 20261018,
+    "pilot_spacing": 4,
+    "channel": "Multitrajet modéré",
+    "estimation": "perfect",
+    "equalizer": "zf"
+  },
+  "default_measurement": {
+    "energy_reference": "total",
+    "noise_variance": 0.02882124997755294,
+    "expected_useful_energy": 52.0,
+    "expected_cp_energy": 13.777188158206883,
+    "deterministic_pilot_cp_energy": 4.777188158206884,
+    "expected_total_energy": 65.77718815820688,
+    "eb_total_per_data_bit": 0.4567860288764367,
+    "n_data": 36,
+    "n_pilots": 16,
+    "payload_rate_bps": 1728000.0,
+    "overhead_factor": 1.8271441155057468,
+    "method": "perfect_zf",
+    "equalizer": "zf",
+    "estimation": "perfect",
+    "order": 16,
+    "n_fft": 64,
+    "n_active": 52,
+    "cp_length": 16,
+    "spacing_hz": 15000.0,
+    "sample_rate_hz": 960000.0,
+    "cp_sufficient": true,
+    "channel_memory": 3,
+    "channel_taps": [
+      [
+        0.9600307214746386,
+        0.0
+      ],
+      [
+        0.0,
+        0.24000768036865966
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -0.1440046082211958,
+        0.0
+      ]
+    ],
+    "pilot_spacing": 4,
+    "n_ofdm_symbols": 128,
+    "ebn0_db": 12.0,
+    "n_bits": 18432,
+    "bit_errors": 195,
+    "errors_by_carrier_bit": [
+      [
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        4,
+        4,
+        2,
+        2
+      ],
+      [
+        3,
+        6,
+        3,
+        4
+      ],
+      [
+        2,
+        7,
+        3,
+        13
+      ],
+      [
+        4,
+        9,
+        2,
+        9
+      ],
+      [
+        3,
+        4,
+        1,
+        9
+      ],
+      [
+        4,
+        7,
+        2,
+        7
+      ],
+      [
+        1,
+        8,
+        3,
+        5
+      ],
+      [
+        0,
+        2,
+        1,
+        6
+      ],
+      [
+        0,
+        4,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        2,
+        0
+      ],
+      [
+        1,
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        1,
+        1,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        2
+      ],
+      [
+        3,
+        2,
+        1,
+        1
+      ],
+      [
+        0,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1
+      ]
+    ],
+    "ber": 0.010579427083333334,
+    "ber_ci_lower": 0.0010907262831928919,
+    "ber_ci_upper": 0.08618067672455905,
+    "confidence": 0.95,
+    "interval_method": "Clopper-Pearson + Bonferroni par porteuse/bit",
+    "ber_theory_conditional": 0.009565098680508819,
+    "channel_mse_data": 0.0,
+    "symbol_mse": 0.03700405531249465,
+    "pilot_positions": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      25,
+      26,
+      30,
+      34,
+      38,
+      42,
+      46,
+      50,
+      51
+    ],
+    "seed": 20261018,
+    "numpy_version": "2.5.4"
+  },
+  "sweep_settings": {
+    "n_fft": 64,
+    "n_active": 52,
+    "cp_length": 16,
+    "order": 16,
+    "ebn0_db": 12.0,
+    "frames": 16,
+    "seed": 20261018,
+    "pilot_spacing": 4,
+    "channel": "Multitrajet modéré",
+    "estimation": "perfect",
+    "equalizer": "zf"
+  },
+  "sweep_levels_db": [
+    6.0,
+    18.0
+  ],
+  "image_measurement": {
+    "n_fft": 64,
+    "n_active": 52,
+    "cp_length": 16,
+    "order": 16,
+    "spacing_hz": 15000.0,
+    "pilot_spacing": 4,
+    "estimation": "perfect",
+    "equalizer": "zf",
+    "channel_taps": [
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "seed": 20261018,
+    "ebn0_db": 30,
+    "noise_variance": 0.0004567860288764367,
+    "energy_reference": "nominal total per OFDM data bit (transport, headers and padding included)",
+    "noise_disabled": false,
+    "actual_transmitted_energy": 21077.897595886236,
+    "actual_eb_transport": 0.4814943712510562,
+    "actual_eb_image": 0.5717745658606292,
+    "n_ofdm_symbols": 304,
+    "image_width": 48,
+    "image_height": 32,
+    "image_bytes": 4608,
+    "payload_n_bits": 36864,
+    "payload_bit_errors": 0,
+    "payload_ber": 0.0,
+    "raw_payload_byte_errors": 0,
+    "transport_n_bits": 43776,
+    "transport_bit_errors": 0,
+    "transport_ber": 0.0,
+    "header_bit_errors": 0,
+    "packet_padding_bit_errors": 0,
+    "ofdm_padding_bits": 0,
+    "ofdm_padding_bit_errors": 0,
+    "transmitted_packets": 24,
+    "chunk_bytes": 192,
+    "header_bytes_per_packet": 36,
+    "packet_padding_bytes": 0,
+    "expected_packets_rx": 24,
+    "valid_packets": 24,
+    "corrupt_payload_packets": 0,
+    "invalid_header_packets": 0,
+    "missing_packets_rx": 0,
+    "reconstructed": true,
+    "image_crc_valid": true,
+    "reconstruction_status": "complete",
+    "diagnostic_byte_errors": 0,
+    "accepted_byte_errors": 0,
+    "erased_bytes": 0,
+    "accepted_corrupt_bytes": 0,
+    "interval_method": "aucun : image déterministe non iid",
+    "numpy_version": "2.5.4"
+  },
+  "ui_tests": "Streamlit AppTest scenarios are run separately by pytest",
+  "deployment": "local Streamlit; no remote hosting configured"
+}

@@ -41,7 +41,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
       - name: Installer le projet
-        run: python -m pip install -e ".[dev]"
+        run: python -m pip install -e ".[dev,app]"
       - name: Tests scientifiques
         run: python -m pytest -q
       - name: Analyse statique
@@ -66,6 +66,7 @@ jobs:
           python experiments/14_channel_estimation.py
           python experiments/15_global_comparison.py
           python experiments/16_image_transmission.py
+          python experiments/17_interactive_lab.py
       - name: Archiver les mesures
         uses: actions/upload-artifact@v4
         with:
