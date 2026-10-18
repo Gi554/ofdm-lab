@@ -17,3 +17,6 @@ openai/
 # Artefacts de construction
 build/
 dist/
+
+# Secrets Streamlit locaux (le thème reste versionné)
+.streamlit/secrets.toml

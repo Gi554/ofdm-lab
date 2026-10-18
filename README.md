@@ -9,19 +9,19 @@ Implémentations explicites avec NumPy, en bande de base complexe, sans équipem
 
 La phase 1 est validée : génération binaire, BPSK, QPSK Gray, 16-QAM et 64-QAM Gray.
 La phase 2 est validée : AWGN, conversions énergétiques, BER/SER, intervalles de confiance
-et références théoriques exactes. **324 tests** ; courbes sur **43,2 millions de bits**.
+et références théoriques exactes. **342 tests** ; courbes sur **43,2 millions de bits**.
 La phase 3 est validée : FFT/IFFT unitaires, émetteur/récepteur OFDM, CP, DC/gardes nulles,
 validation AWGN sur 21,632 millions de bits. La phase 4 est validée : canal multitrajet, CP et égalisation connue ZF/MMSE.
 La phase 5 est validée : CFO et correction CP, pilotes LS/interpolation, comparaison globale.
 La phase 6 est validée : transmission RGB8, trames/CRC et reconstruction d’image.
-L’interface Streamlit (phase 7) reste à développer.
+La phase 7 est implémentée : application Streamlit locale, simulations, comparaisons, images et exports.
 Voir [PROGRESS.md](PROGRESS.md) pour les mesures et validations exécutées.
 
 ## Installation (PowerShell, Python 3.11 ou ultérieur)
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+.\.venv\Scripts\python.exe -m pip install -e ".[dev,app]"
 .\.venv\Scripts\python.exe -m pytest
 .\.venv\Scripts\python.exe -m ruff check .
 ```
@@ -149,3 +149,18 @@ et CRC. Elle distingue pixels reçus, blocs acceptés et effacements, sans recon
 à partir de l’original. Mire de démonstration incluse ; option --image pour un autre PNG.
 Voir [l’expérience 16](docs/experiments/16_image_transmission.md) et
 [le format de transport](docs/theory/11_image_transport.md).
+
+## Lancer l’application web locale
+
+Depuis la racine du dépôt :
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app/streamlit_app.py --server.address 127.0.0.1
+```
+
+Ouvrir l’URL affichée, habituellement http://127.0.0.1:8501. Quatre espaces : Simulation,
+Comparaisons, Image et Repères. Les réglages modifiés ne changent jamais l’étiquette des
+anciens résultats ; les exports conservent les paramètres exécutés. Aucun hébergement
+public n’est configuré. Voir [le guide utilisateur](app/README.md).
+
+![Laboratoire Streamlit](docs/images/17_streamlit.jpg)

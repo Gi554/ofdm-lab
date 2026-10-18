@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-18",
+  "browser": "navigateur intégré",
+  "viewports_checked": [
+    "panneau étroit (environ 557 px)",
+    "1280x900 bureau"
+  ],
+  "checks": {
+    "default_metrics_visible": true,
+    "csv_download_matches_five_methods": true,
+    "json_download_preserves_seed_and_parameters": true,
+    "comparison_curve_rendered_after_session_migration": true,
+    "changed_settings_keep_previous_measurement_labels": true,
+    "image_demo_30db_zero_errors_24_of_24_packets": true
+  },
+  "file_upload_note": "PNG byte parser and image pipeline verified by automated tests; browser chooser attempt interrupted by local preview connection loss; no claim of a successful native upload",
+  "screenshots": [
+    "docs/images/17_streamlit.jpg",
+    "docs/images/17_image.jpg"
+  ]
+}

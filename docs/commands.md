@@ -48,3 +48,12 @@ python experiments/16_image_transmission.py --image mon_image.png
 ```
 Le second appel remplace les résultats de l’expérience par ceux de ce PNG local.
 Le chemin complet n’est pas enregistré dans les rapports ; vérifier le contenu avant publication.
+
+## Interface Streamlit et vérification des services
+```powershell
+python -m pip install -e ".[dev,app]"
+python -m streamlit run app/streamlit_app.py --server.address 127.0.0.1
+python experiments/17_interactive_lab.py
+```
+Le serveur affiche son URL locale ; Ctrl+C l’arrête. Les scénarios d’interface pytest
+requièrent Streamlit et la disponibilité des sockets locales. Guide détaillé : app/README.md.
