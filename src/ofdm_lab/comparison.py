@@ -10,7 +10,7 @@ from .receiver import receive
 from .theory import ber_awgn
 
 
-def simulate_comparison(layout, taps, ebn0_db, n_ofdm_symbols, seed):
+def simulate_comparison(layout, taps, ebn0_db, n_ofdm_symbols, seed, *, return_trace=False):
     """Comparer none, perfect_zf/mmse et pilot_zf/mmse, gain de décision compensé.
 
     CFO nul et début connu. CP court accepté uniquement comme essai descriptif :
@@ -45,6 +45,7 @@ def simulate_comparison(layout, taps, ebn0_db, n_ofdm_symbols, seed):
         theoretical = float(np.mean([ber_awgn(db, config.order) for db in effective]))
     rows = []
     intervals = {}
+    symbol_trace = {}
     for method, response, equalizer in [
         ("none", None, "none"),
         ("perfect_zf", truth, "zf"),
@@ -70,6 +71,8 @@ def simulate_comparison(layout, taps, ebn0_db, n_ofdm_symbols, seed):
             lower, upper = intervals[key]
         model = np.ones(config.n_fft) if response is None else response
         symbols = rx.equalized_symbols.reshape(frames, config.n_active)[:, positions]
+        if return_trace:
+            symbol_trace[method] = symbols.ravel()[:2048].copy()
         rows.append(
             dict(
                 **budget,
@@ -108,4 +111,12 @@ def simulate_comparison(layout, taps, ebn0_db, n_ofdm_symbols, seed):
                 numpy_version=np.__version__,
             )
         )
+    if return_trace:
+        return rows, {
+            "transmitted": target.ravel()[:2048].copy(),
+            "symbols": symbol_trace,
+            "waveform": tx.waveform[:8192].copy(),
+            "channel": truth.copy(),
+            "estimated_channel": estimated[0].copy(),
+        }
     return rows
