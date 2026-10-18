@@ -1,6 +1,6 @@
 # Conception, simulation et analyse des performances d’un système de transmission numérique OFDM sur canaux AWGN et multitrajets
 
-**Rapport progressif — phases 1 à 6 validées ; phase 7 à réaliser.**
+**Rapport de validation — phases 1 à 7 implémentées et validées dans les hypothèses du laboratoire.**
 
 ## 1. Résumé
 Une bibliothèque NumPy implémente la génération binaire, la BPSK, la QPSK Gray et les QAM Gray 16/64.
@@ -122,4 +122,13 @@ reçus valides. Les vues diagnostique/acceptée distinguent corruption et efface
 Douze essais sans bruit sont exacts ; 54 mesures bruitées documentent pertes de blocs,
 en-têtes, BER pixels/transport et énergie réelle. Voir [l’expérience 16](experiments/16_image_transmission.md).
 Les CRC détectent sans corriger, et le RGB brut ne représente pas les effets d’un codec
-ou d’une liaison RF complète. La phase 6 est validée ; l’interface Streamlit reste à réaliser.
+ou d’une liaison RF complète. La phase 6 est validée ; l’interface Streamlit est décrite dans l’expérience 17.
+
+## Expérience 17 — Application Streamlit
+Le laboratoire local réutilise les modules validés et propose réglages, constellation,
+spectre, canal, comparaisons BER, image et exports CSV/JSON/PNG. Les mesures restent liées
+aux paramètres réellement exécutés ; les anciens résultats ne changent pas de signification
+quand les widgets sont modifiés. 342 tests, dont quatre parcours AppTest, et vérification
+navigateur complètent les validations radio. Voir [le guide](../app/README.md) et
+[l’expérience17](experiments/17_interactive_lab.md).
+La livraison est locale et ne revendique ni hébergement public ni transmission RF réelle.

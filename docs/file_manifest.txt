@@ -2,12 +2,14 @@
 .gitattributes
 .github/workflows/ci.yml
 .gitignore
+.streamlit/config.toml
 AGENTS.md
 CONTRIBUTING.md
 LICENSE
 PROGRESS.md
 README.md
 app/README.md
+app/streamlit_app.py
 assets/test_pattern.png
 configs/awgn.json
 configs/ber.json
@@ -41,9 +43,12 @@ docs/experiments/13_frequency_offset.md
 docs/experiments/14_channel_estimation.md
 docs/experiments/15_global_comparison.md
 docs/experiments/16_image_transmission.md
+docs/experiments/17_interactive_lab.md
 docs/file_manifest.txt
 docs/final_report.md
 docs/glossary.md
+docs/images/17_image.jpg
+docs/images/17_streamlit.jpg
 docs/methodology.md
 docs/theory/01_modulations.md
 docs/theory/02_qam.md
@@ -72,6 +77,7 @@ experiments/13_frequency_offset.py
 experiments/14_channel_estimation.py
 experiments/15_global_comparison.py
 experiments/16_image_transmission.py
+experiments/17_interactive_lab.py
 experiments/_common.py
 experiments/_multipath_common.py
 notebooks/01_fundamentals.ipynb
@@ -108,6 +114,7 @@ results/datasets/global_comparison.csv
 results/datasets/global_scorecard.csv
 results/datasets/global_validation.csv
 results/datasets/image_transmission.csv
+results/datasets/interactive_sweep.csv
 results/datasets/ofdm_awgn.csv
 results/datasets/ofdm_grid.csv
 results/datasets/ofdm_time.csv
@@ -148,6 +155,7 @@ results/reports/ber_comparison.json
 results/reports/ber_summary.json
 results/reports/binary_generation.json
 results/reports/bpsk.json
+results/reports/browser_validation.json
 results/reports/cfo_reproducibility.json
 results/reports/channel_estimation.json
 results/reports/cyclic_prefix.json
@@ -160,6 +168,8 @@ results/reports/global_comparison.json
 results/reports/global_reproducibility.json
 results/reports/image_reproducibility.json
 results/reports/image_transmission.json
+results/reports/interactive_lab.json
+results/reports/interactive_reproducibility.json
 results/reports/multipath.json
 results/reports/ofdm_awgn.json
 results/reports/ofdm_summary.json
@@ -183,6 +193,7 @@ src/ofdm_lab/equalization.py
 src/ofdm_lab/estimation.py
 src/ofdm_lab/image_simulation.py
 src/ofdm_lab/image_transport.py
+src/ofdm_lab/laboratory.py
 src/ofdm_lab/metrics.py
 src/ofdm_lab/modulation.py
 src/ofdm_lab/multipath_simulation.py
@@ -204,6 +215,7 @@ tests/test_equalization.py
 tests/test_estimation.py
 tests/test_image_simulation.py
 tests/test_image_transport.py
+tests/test_laboratory.py
 tests/test_metrics.py
 tests/test_multipath_simulation.py
 tests/test_noise.py
@@ -214,6 +226,7 @@ tests/test_qam.py
 tests/test_qpsk.py
 tests/test_receiver_equalization.py
 tests/test_simulation.py
+tests/test_streamlit_app.py
 tests/test_synchronization.py
 tests/test_theory.py
 tests/test_transforms.py
